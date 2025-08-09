@@ -1,0 +1,22 @@
+:root { font-family: Arial, Helvetica, sans-serif; }
+body { margin:0; background:#ffffff; }
+.app-header { background:#1e1e73; color:#fafafa; padding:1rem; text-align:center; }
+.container { padding:12px; max-width:1100px; margin:0 auto; }
+.topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+#etat { background:#fafafa; padding:8px 12px; border-radius:8px; box-shadow:0 1px 6px rgba(0,0,0,0.08); font-weight:bold; }
+.controls { display:flex; gap:8px; }
+.btn { background:#2c3e50; color:#fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; }
+.btnActivLoc { background:#33b86a; color: #fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; }
+.btnDisacLoc { background:#c0392b; color: #fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; }
+.btn-stop { background:#c0392b; }
+.map-wrap {
+  position: relative;
+  height: 70vh;  
+  width: 80%;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+.map-actions { text-align:center; margin-top:8px; }
+.enigme-modal { position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); background:#fff; padding:18px; border-radius:12px; box-shadow:0 6px 30px rgba(0,0,0,0.2); width:90%; max-width:420px; z-index:2000; }
+.enigme-modal input { width:100%; padding:8px; margin-top:8px; border-radius:6px; border:1px solid #ccc; }
+.modal-actions { margin-top:12px; display:flex; gap:8px; justify-content:flex-end; }
