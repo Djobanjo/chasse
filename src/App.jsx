@@ -92,7 +92,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
       if (current && !current.valide){
         const dist = distanceEnMetres(lat, lng, current.lat, current.lng)
         console.log(`Distance à l'étape "${current.nom}": ${dist.toFixed(2)} mètres`) //<== A SUPP
-        if (dist < 20){  // 5 mètres
+        if (dist < 20){  
           setEtatTexte(`🔔 Proche de: ${current.nom} (distance: ${dist.toFixed(1)}m)`)
           console.log(`etape acut:${etapeActuelle}`)
           setEnigmeIndex(etapeActuelle)

@@ -65,11 +65,20 @@ export default function GameMap({ etapes, currentIndex, dernierePosition, onCent
         )}
         
 
-        {etapes.map((e, idx) => (
-          <Marker key={e.id || idx} position={[e.lat, e.lng]} icon={stepIcon}>
-            <Popup>{e.valide ? `✅ ${e.nom}` : e.nom}</Popup>
-          </Marker>
-        ))}
+        {etapes
+          .filter((e, idx) => {
+            if (e.id === 'start') return true;         // toujours afficher point de départ
+            if (idx < currentIndex) return true;        // afficher étapes déjà validées
+            if (idx === currentIndex) return true;      // afficher étape actuelle (même si pas encore validée)
+            
+            return false;                               // cacher les suivantes
+          })
+          .map((e, idx) => (
+            <Marker key={e.id || idx} position={[e.lat, e.lng]} icon={stepIcon}>
+              <Popup>{e.valide ? `✅ ${e.nom}` : e.nom}</Popup>
+            </Marker>
+          ))}
+
 
         <Recenter position={dernierePosition} />
       </MapContainer>
