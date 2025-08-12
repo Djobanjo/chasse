@@ -11,10 +11,10 @@ body { margin:0; background:#ffffff; }
 .btn-stop { background:#c0392b; }
 .map-wrap {
   position: relative;
-  height: 70vh;  
-  width: 80%;
-  margin: 20px auto;
-  border-radius: 10px;
+  height: 70vh;         /*70vh*/
+  width: 80%;           /*80%*/
+  margin: 20px auto;    /*20px auto*/
+  border-radius: 10px;  /*10px*/
 }
 .map-actions { text-align:center; margin-top:8px; }
 .enigme-modal { position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); background:#fff; padding:18px; border-radius:12px; box-shadow:0 6px 30px rgba(0,0,0,0.2); width:90%; max-width:420px; z-index:2000; }

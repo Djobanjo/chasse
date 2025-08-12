@@ -37,91 +37,81 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
     return [
       {
         id: 'bat-S4a',
-        nom: '🎯 Batiment S4a',
+        nom: '🎯 enigme n°1',
         lat: -20.901010,
         lng: 55.484410,
-        enigme: 'Mon emplacement tu trouveras, le savoir tu auras',
         reponses: ['bibliotheque universitaire','bibliothèque universitaire','bibliothèque','bibliotheque','bu','BU'],
         valide: false
       },
       {
         id: 'bat-S2',
-        nom: '🎯 Batiment S2',
+        nom: '🎯 enigme n°2',
         lat: -20.901278,
         lng: 55.484438,
-        enigme: "Quel est le nom de l’université ?",
-        reponses: ['universite de la reunion','université de la réunion','univ reunion','universite reunion'],
+        reponses: ['université de la réunion','université de la réunion','université de la réunion','université de la réunion'],
         valide: false
       },
       {
         id: 'amphi-a',
-        nom: '🎯 Amphi Charpak',
+        nom: '🎯 enigme n°3',
         lat: -20.901500,
         lng: 55.483870,
-        enigme: "Combien y a-t-il d’amphis au bâtiment A ?",
         reponses: ['3','trois'],
         valide: false
       },
       {
         id: 'bu-sciences',
-        nom: '🎯 BU-Scicences',
+        nom: '🎯 enigme n°4',
         lat: -20.901450,
         lng: 55.483020,
-        enigme: "Quel est le nom de l’amphi B ?",
         reponses: ['amphi b','amphi charpak'],
         valide: false
       },
       {
         id:'cafet',
-        nom: '🎯 Cafétéria',
+        nom: '🎯 enigme n°5',
         lat: -20.901990,
         lng: 55.483500,
-        enigme: "Quel est le plat du jour ?",
         reponses: ['poulet rôti','poulet','roti'],
         valide: false
       },
       {
         id:'RU',
-        nom: '🎯 RU',
+        nom: '🎯 enigme n°6',
         lat: -20.902310,
         lng: 55.483800,
-        enigme: "Quel est le plat du jour ?",
         reponses: ['poulet rôti','poulet','roti'],
         valide: false
       },
       {
         id:'amphi-cadet',
-        nom: '🎯 Amphi Cadet',
+        nom: '🎯 enigme n°7',
         lat: -20.902200,
         lng: 55.484270,
-        enigme: "Quel est le plat du jour ?",
         reponses: ['poulet rôti','poulet','roti'],
         valide: false
       },
       {
         id:'bat-soin',
-        nom: '🎯 SUMPPS',
+        nom: '🎯 enigme n°8',
         lat: -20.902700,
         lng: 55.484570,
-        enigme: "Quel est le plat du jour ?",
         reponses: ['poulet rôti','poulet','roti'],
         valide: false
       },
       {
         id:'amphi-550',
-        nom: '🎯 Amphi 550',
-        lat: -20.902500,
-        lng: 55.486170,
-        enigme: "Quel est le plat du jour ?",
+        nom: '🎯 enigme n°9',
+        lat: -20.902390,
+        lng: 55.485570,
         reponses: ['poulet rôti','poulet','roti'],
         valide: false
       },
       {
         id:'distrib',
-        nom: '🎯 Distributeur',
+        nom: '🎯 enigme n°10',
         lat: -20.901900,
         lng: 55.485710,
-        enigme: "Quel est le plat du jour ?",
         reponses: ['poulet rôti','poulet','roti'],
         valide: false
       }
