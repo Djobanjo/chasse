@@ -40,7 +40,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯 enigme n°1',
         lat: -20.901010,
         lng: 55.484410,
-        reponses: ['bibliotheque universitaire','bibliothèque universitaire','bibliothèque','bibliotheque','bu','BU'],
+        reponses: ['1','un'],
         valide: false
       },
       {
@@ -48,7 +48,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯 enigme n°2',
         lat: -20.901278,
         lng: 55.484438,
-        reponses: ['université de la réunion','université de la réunion','université de la réunion','université de la réunion'],
+        reponses: ['2','deux'],
         valide: false
       },
       {
@@ -64,7 +64,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯 enigme n°4',
         lat: -20.901450,
         lng: 55.483020,
-        reponses: ['amphi b','amphi charpak'],
+        reponses: ['4','quatre'],
         valide: false
       },
       {
@@ -72,7 +72,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯 enigme n°5',
         lat: -20.901990,
         lng: 55.483500,
-        reponses: ['poulet rôti','poulet','roti'],
+        reponses: ['5','cinq'],
         valide: false
       },
       {
@@ -80,7 +80,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯 enigme n°6',
         lat: -20.902310,
         lng: 55.483800,
-        reponses: ['poulet rôti','poulet','roti'],
+        reponses: ['6','six'],
         valide: false
       },
       {
@@ -88,7 +88,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯 enigme n°7',
         lat: -20.902200,
         lng: 55.484270,
-        reponses: ['poulet rôti','poulet','roti'],
+        reponses: ['7','sept'],
         valide: false
       },
       {
@@ -96,7 +96,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯 enigme n°8',
         lat: -20.902700,
         lng: 55.484570,
-        reponses: ['poulet rôti','poulet','roti'],
+        reponses: ['8','huit'],
         valide: false
       },
       {
@@ -104,7 +104,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯 enigme n°9',
         lat: -20.902390,
         lng: 55.485570,
-        reponses: ['poulet rôti','poulet','roti'],
+        reponses: ['9','neuf'],
         valide: false
       },
       {
@@ -112,7 +112,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯 enigme n°10',
         lat: -20.901900,
         lng: 55.485710,
-        reponses: ['poulet rôti','poulet','roti'],
+        reponses: ['10','dix'],
         valide: false
       }
     ]

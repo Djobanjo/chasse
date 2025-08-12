@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, useMap, ImageOverlay } from 'react-leaflet'
 import L from 'leaflet'
 
 
@@ -39,7 +39,7 @@ const bounds = [
 // ];
 
 
-const userIcon = L.icon({ iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png', iconSize: [32,32], iconAnchor: [16,32] })
+const userIcon = L.icon({ iconUrl: 'https://cdn-icons-png.flaticon.com/512/149/149060.png', iconSize: [32,32], iconAnchor: [16,32] })
 const stepIcon = L.icon({ iconUrl: 'https://cdn-icons-png.flaticon.com/512/252/252025.png', iconSize: [30,30], iconAnchor: [15,30] })
 
 export default function GameMap({ etapes, currentIndex, dernierePosition, onCenterRequested }) {
@@ -57,6 +57,10 @@ export default function GameMap({ etapes, currentIndex, dernierePosition, onCent
         maxBoundsViscosity={1.0}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        {/* <ImageOverlay
+          url="public/carte.png"
+          bounds={bounds}
+        /> */}
         <GetMapInstance setMapInstance={map =>(mapRef.current = map)} />
         {dernierePosition && (
           <Marker position={[dernierePosition.lat, dernierePosition.lng]} icon={userIcon}>
@@ -66,13 +70,13 @@ export default function GameMap({ etapes, currentIndex, dernierePosition, onCent
         
 
         {etapes
-          .filter((/*e, idx*/) => true /*{
+          .filter((e, idx) => {
             if (e.id === 'start') return true;         // toujours afficher point de départ
             if (idx < currentIndex) return true;        // afficher étapes déjà validées
             if (idx === currentIndex) return true;      // afficher étape actuelle (même si pas encore validée)
             
             return false;                               // cacher les suivantes
-          }*/)
+          })
           .map((e, idx) => (
             <Marker key={e.id || idx} position={[e.lat, e.lng]} icon={stepIcon}>
               <Popup>{e.valide ? `✅ ${e.nom}` : e.nom}</Popup>
