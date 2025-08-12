@@ -40,7 +40,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯 enigme n°1',
         lat: -20.901010,
         lng: 55.484410,
-        reponses: ['1','un'],
+        reponses: ['1','un','Un'],
         valide: false
       },
       {
@@ -48,7 +48,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯 enigme n°2',
         lat: -20.901278,
         lng: 55.484438,
-        reponses: ['2','deux'],
+        reponses: ['2','deux','Deux'],
         valide: false
       },
       {
@@ -56,7 +56,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯 enigme n°3',
         lat: -20.901500,
         lng: 55.483870,
-        reponses: ['3','trois'],
+        reponses: ['3','trois','Trois'],
         valide: false
       },
       {
@@ -64,7 +64,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯 enigme n°4',
         lat: -20.901450,
         lng: 55.483020,
-        reponses: ['4','quatre'],
+        reponses: ['4','quatre','Quatre'],
         valide: false
       },
       {
@@ -72,7 +72,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯 enigme n°5',
         lat: -20.901990,
         lng: 55.483500,
-        reponses: ['5','cinq'],
+        reponses: ['5','cinq','Cinq'],
         valide: false
       },
       {
@@ -80,7 +80,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯 enigme n°6',
         lat: -20.902310,
         lng: 55.483800,
-        reponses: ['6','six'],
+        reponses: ['6','six','Six'],
         valide: false
       },
       {
@@ -88,7 +88,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯 enigme n°7',
         lat: -20.902200,
         lng: 55.484270,
-        reponses: ['7','sept'],
+        reponses: ['7','sept','Sept'],
         valide: false
       },
       {
@@ -96,7 +96,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯 enigme n°8',
         lat: -20.902700,
         lng: 55.484570,
-        reponses: ['8','huit'],
+        reponses: ['8','huit','Huit'],
         valide: false
       },
       {
@@ -104,7 +104,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯 enigme n°9',
         lat: -20.902390,
         lng: 55.485570,
-        reponses: ['9','neuf'],
+        reponses: ['9','neuf','Neuf'],
         valide: false
       },
       {
@@ -112,7 +112,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯 enigme n°10',
         lat: -20.901900,
         lng: 55.485710,
-        reponses: ['10','dix'],
+        reponses: ['10','dix','Dix'],
         valide: false
       }
     ]
