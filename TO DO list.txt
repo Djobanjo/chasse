@@ -1,8 +1,7 @@
-bouton localiser: non
+bouton localiser: OK
 map zone delimité: OK
 enigmes à écrire: non
 réponses hachés: non
-points déclencheur d'énigme: non
 meilleur UI/UX: non
 optimisation: non
 ref à l'ukraine
