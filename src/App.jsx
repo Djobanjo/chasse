@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import GameMap from './components/GameMap'
 import EnigmeModal from './components/EnigmeModal'
 
+
 export default function App(){
-  const [etapes, setEtapes] = useState([])
+  const [etapes, setEtapes] = useState([]) //ENEVER FUNCTION APRES TEST
   const [etapeActuelle, setEtapeActuelle] = useState(0)
   const [dernierePosition, setDernierePosition] = useState(null)
   const [enigmeIndex, setEnigmeIndex] = useState(null)
@@ -32,33 +33,96 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
 }
 
 
-  function buildInitialSteps(lat, lng){
+  function buildInitialSteps(lat, lng){ //lat, lng <== REMETTRE DANS LES PARAMS
     return [
       {
-        id: 'start',
-        nom: '🎯 Point de départ',
-        lat: -20.901578,
-        lng: 55.483478,
+        id: 'bat-S4a',
+        nom: '🎯 Batiment S4a',
+        lat: -20.901010,
+        lng: 55.484410,
         enigme: 'Mon emplacement tu trouveras, le savoir tu auras',
         reponses: ['bibliotheque universitaire','bibliothèque universitaire','bibliothèque','bibliotheque','bu','BU'],
         valide: false
       },
       {
-        id: 'bu',
-        nom: '📚 Bibliothèque Universitaire',
-        lat: -20.901358,
-        lng: 55.483038,
+        id: 'bat-S2',
+        nom: '🎯 Batiment S2',
+        lat: -20.901278,
+        lng: 55.484438,
         enigme: "Quel est le nom de l’université ?",
         reponses: ['universite de la reunion','université de la réunion','univ reunion','universite reunion'],
         valide: false
       },
       {
         id: 'amphi-a',
-        nom: '🏛️ Amphi A',
-        lat: -20.9051,
-        lng: 55.48815,
+        nom: '🎯 Amphi Charpak',
+        lat: -20.901500,
+        lng: 55.483870,
         enigme: "Combien y a-t-il d’amphis au bâtiment A ?",
         reponses: ['3','trois'],
+        valide: false
+      },
+      {
+        id: 'bu-sciences',
+        nom: '🎯 BU-Scicences',
+        lat: -20.901450,
+        lng: 55.483020,
+        enigme: "Quel est le nom de l’amphi B ?",
+        reponses: ['amphi b','amphi charpak'],
+        valide: false
+      },
+      {
+        id:'cafet',
+        nom: '🎯 Cafétéria',
+        lat: -20.901990,
+        lng: 55.483500,
+        enigme: "Quel est le plat du jour ?",
+        reponses: ['poulet rôti','poulet','roti'],
+        valide: false
+      },
+      {
+        id:'RU',
+        nom: '🎯 RU',
+        lat: -20.902310,
+        lng: 55.483800,
+        enigme: "Quel est le plat du jour ?",
+        reponses: ['poulet rôti','poulet','roti'],
+        valide: false
+      },
+      {
+        id:'amphi-cadet',
+        nom: '🎯 Amphi Cadet',
+        lat: -20.902200,
+        lng: 55.484270,
+        enigme: "Quel est le plat du jour ?",
+        reponses: ['poulet rôti','poulet','roti'],
+        valide: false
+      },
+      {
+        id:'bat-soin',
+        nom: '🎯 SUMPPS',
+        lat: -20.902700,
+        lng: 55.484570,
+        enigme: "Quel est le plat du jour ?",
+        reponses: ['poulet rôti','poulet','roti'],
+        valide: false
+      },
+      {
+        id:'amphi-550',
+        nom: '🎯 Amphi 550',
+        lat: -20.902500,
+        lng: 55.486170,
+        enigme: "Quel est le plat du jour ?",
+        reponses: ['poulet rôti','poulet','roti'],
+        valide: false
+      },
+      {
+        id:'distrib',
+        nom: '🎯 Distributeur',
+        lat: -20.901900,
+        lng: 55.485710,
+        enigme: "Quel est le plat du jour ?",
+        reponses: ['poulet rôti','poulet','roti'],
         valide: false
       }
     ]
