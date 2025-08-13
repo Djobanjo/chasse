@@ -96,7 +96,7 @@ export default function GameMap({ etapes, currentIndex, dernierePosition, onCent
             if (mapRef.current && dernierePosition) {
 
               
-              mapRef.current.setView([dernierePosition.lat, dernierePosition.lng], 18, {animate: false});
+              mapRef.current.pantTo([dernierePosition.lat, dernierePosition.lng], 18, {animate: true});
             }
           }}
         >
