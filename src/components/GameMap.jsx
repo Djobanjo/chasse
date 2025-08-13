@@ -17,8 +17,9 @@ function GetMapInstance({ setMapInstance }) {
 function Recenter({ position }){
   const map = useMap()
   useEffect(() => {
-    
-    if (position) map.panTo([position.lat, position.lng],17, {animate: true})
+    if (position){
+      map.panTo([position.lat, position.lng], {animate: true})
+    }
   }, [position, map])
   return null
 }
@@ -96,7 +97,7 @@ export default function GameMap({ etapes, currentIndex, dernierePosition, onCent
             if (mapRef.current && dernierePosition) {
 
               
-              mapRef.current.pantTo([dernierePosition.lat, dernierePosition.lng], 18, {animate: true});
+              mapRef.current.panTo([dernierePosition.lat, dernierePosition.lng], {animate: true});
             }
           }}
         >
