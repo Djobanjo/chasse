@@ -18,7 +18,7 @@ function Recenter({ position }){
   const map = useMap()
   useEffect(() => {
     
-    if (position) map.setView([position.lat, position.lng],17, {animate: false})
+    if (position) map.panTo([position.lat, position.lng],17, {animate: true})
   }, [position, map])
   return null
 }

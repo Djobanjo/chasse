@@ -16,7 +16,15 @@ body { margin:0; background:#ffffff; }
   margin: 20px auto;    /*20px auto*/
   border-radius: 10px;  /*10px*/
 }
+@media (max-width: 768px) {
+  .map-wrap {
+    width: 100vw;      
+    height: 100vh;     
+    margin: 0;
+    border-radius: 0;  
+  }
+}
 .map-actions { text-align:center; margin-top:8px; }
-.enigme-modal { position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); background:#fff; padding:18px; border-radius:12px; box-shadow:0 6px 30px rgba(0,0,0,0.2); width:90%; max-width:420px; z-index:2000; }
+.enigme-modal { position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); background:#fff; padding:18px; border-radius:12px; box-shadow:0 6px 30px rgba(0,0,0,0.2); width:90%; max-width:420px; max-height: 80vh; overflow-y: auto; z-index:2000; box-sizing: border-box; }
 .enigme-modal input { width:100%; padding:8px; margin-top:8px; border-radius:6px; border:1px solid #ccc; }
 .modal-actions { margin-top:12px; display:flex; gap:8px; justify-content:flex-end; }
