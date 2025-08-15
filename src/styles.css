@@ -14,15 +14,80 @@ body { margin:0; background:#ffffff; }
   max-width: none;
   margin: 0 auto;
 }
-
+.map-wrapper {
+  position: relative; /* nécessaire pour que le modal et le blur soient au-dessus */
+  width: 100%;
+  flex: 1;
+}
 .map-wrap {
   height: 100vh;         /*70vh*/
   width: 100%;           /*80%*/
   margin: 12px 0;    /*20px auto*/
   border-radius: 10;  /*10px*/
 }
+.overlay-blur-map {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000; /* au-dessus de la carte */
+}
+.overlay-modal {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 400px;
+  padding: 16px;
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 3000; /* au-dessus du flou */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
 
 @media (max-width: 768px) {
+.map-wrapper {
+  position: relative; /* nécessaire pour que l'overlay soit positionné au-dessus */
+  width: 100%;
+  flex: 1;
+}
+
+.overlay-blur-map {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000; /* au-dessus de la carte */
+}
+
+.overlay-modal {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 300px;
+  padding: 16px;
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 3000; /* au-dessus du flou */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
   .container{
     display: flex;
     flex-direction: column;
@@ -95,6 +160,13 @@ body { margin:0; background:#ffffff; }
     font-weight: bold; 
   }
 }
+
+
+
+
+
+
+
 /*.map-actions { text-align:center; margin-top:8px; }*/
 .enigme-modal { position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); background:#fff; padding:18px; border-radius:12px; box-shadow:0 6px 30px rgba(0,0,0,0.2); width:90%; max-width:420px; max-height: 80vh; overflow-y: auto; z-index:2000; box-sizing: border-box; }
 .enigme-modal input { width:100%; padding:8px; margin-top:8px; border-radius:6px; border:1px solid #ccc; }

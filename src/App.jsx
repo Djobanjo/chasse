@@ -1,9 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
 import GameMap from './components/GameMap'
 import EnigmeModal from './components/EnigmeModal'
+import TeamNameModal from './components/TeamNameModal';
+import FelicitationPage from './components/FelicitationPage';
+
+
 
 
 export default function App(){
+  const [teamName, setTeamName] = useState(localStorage.getItem("teamName") || "")
+  const [finished, setFinished] = useState(false)
   const [etapes, setEtapes] = useState([]) //ENEVER FUNCTION APRES TEST
   const [etapeActuelle, setEtapeActuelle] = useState(0)
   const [dernierePosition, setDernierePosition] = useState(null)
@@ -205,6 +211,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
 
 
   function validerReponse(){
+
     if (enigmeIndex === null) return
     const user = normaliser(reponseTemp)
     const bonnes = etapes[enigmeIndex].reponses.map(normaliser)
@@ -217,8 +224,11 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
       // avancer
       setEtapeActuelle(prev => {
         const n = prev + 1
-        if (n >= etapes.length) { setEtatTexte('🎉 Chasse au trésor terminée !'); alert('🎉 Chasse au trésor terminée !') }
-        return n
+        if (n >= etapes.length) { 
+          setEtatTexte('🎉 Chasse au trésor terminée !'); 
+          setFinished(true);
+        }
+        return n;
       })
     } else {
       setEtatTexte('❌ Mauvaise réponse. Essaie encore !')
@@ -246,6 +256,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
   }, [])
 
 
+
   return (
     <div>
       {/* <header className="app-header"><h1>Chasse au trésor </h1></header> */}
@@ -261,14 +272,29 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
           )}
         </div>
        
-      <div className="map-container">
-        { <GameMap
+      <div className="map-wrapper">
+        <GameMap
           etapes={etapes}
           currentIndex={etapeActuelle}
           dernierePosition={dernierePosition}
           // onCenterRequested={recentrerSurMoi}
           mapRef={mapRef}
-        />}
+        />
+      
+
+        {!teamName && (
+          <>
+            <div className="overlay-blur-map"></div>
+            <div className="overlay-modal">
+              <TeamNameModal
+                onSave={(name) => {
+                  localStorage.setItem("teamName", name);
+                  setTeamName(name);
+                }}
+              />
+            </div>
+          </>
+        )}
       </div>
         {enigmeIndex !== null && etapes[enigmeIndex] && (
           <EnigmeModal
