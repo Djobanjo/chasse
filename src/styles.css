@@ -1,7 +1,7 @@
 :root { font-family: Arial, Helvetica, sans-serif; }
 body { margin:0; background:#ffffff; }
 .app-header { background:#1e1e73; color:#fafafa; padding:1rem; text-align:center; }
-.container { padding:12px; max-width:1100px; margin:0 auto; }
+.container { padding:12px; max-width:none; margin:0 auto; }
 .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
 #etat { background:#fafafa; padding:8px 12px; border-radius:8px; box-shadow:0 1px 6px rgba(0,0,0,0.08); font-weight:bold; }
 .controls { display:flex; gap:8px; }
@@ -9,22 +9,93 @@ body { margin:0; background:#ffffff; }
 .btnActivLoc { background:#33b86a; color: #fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; }
 .btnDisacLoc { background:#c0392b; color: #fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; }
 .btn-stop { background:#c0392b; }
-.map-wrap {
-  position: relative;
-  height: 70vh;         /*70vh*/
-  width: 80%;           /*80%*/
-  margin: 20px auto;    /*20px auto*/
-  border-radius: 10px;  /*10px*/
+.map-container {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
 }
+
+.map-wrap {
+  height: 100vh;         /*70vh*/
+  width: 100%;           /*80%*/
+  margin: 12px 0;    /*20px auto*/
+  border-radius: 10;  /*10px*/
+}
+
 @media (max-width: 768px) {
+  .container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    flex-shrink: 0;
+  }
+    .map-container {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
   .map-wrap {
-    width: 100vw;      
-    height: 100vh;     
-    margin: 0;
+    flex: 1;   
+    width: 100%; 
+    margin:0;
     border-radius: 0;  
+    height: 100%;     
+  }
+
+  #etat {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 4px 12px;
+    border-radius: 5px;
+    flex: 1;
+    box-sizing: border-box;
+  }
+
+  #etat span {
+    display: inline-block;
+    animation: defilement 8s linear infinite;
+    animation-delay: 4s;
+  }
+
+  .controls {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  @keyframes defilement {
+    0% {
+      transform: translateX(0%);
+    }
+    10%{
+      transform: translateX(0%)
+    }
+    100% {
+      transform: translateX(-100%);   
+    }
+  }
+
+  .btnActivLoc, 
+  .btnDisacLoc {
+    font-size: 0.9em;
+    font-weight: bold; 
   }
 }
-.map-actions { text-align:center; margin-top:8px; }
+/*.map-actions { text-align:center; margin-top:8px; }*/
 .enigme-modal { position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); background:#fff; padding:18px; border-radius:12px; box-shadow:0 6px 30px rgba(0,0,0,0.2); width:90%; max-width:420px; max-height: 80vh; overflow-y: auto; z-index:2000; box-sizing: border-box; }
 .enigme-modal input { width:100%; padding:8px; margin-top:8px; border-radius:6px; border:1px solid #ccc; }
 .modal-actions { margin-top:12px; display:flex; gap:8px; justify-content:flex-end; }

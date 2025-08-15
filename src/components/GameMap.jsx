@@ -14,11 +14,14 @@ function GetMapInstance({ setMapInstance }) {
 }
 
 
-function Recenter({ position }){
+function RecenterOnce({ position }){
   const map = useMap()
+  const hasCentered = useRef(false);
+
   useEffect(() => {
-    if (position){
-      map.panTo([position.lat, position.lng], {animate: true})
+    if (position && !hasCentered.current){
+      map.setView([position.lat, position.lng],17, {animate: false})
+      hasCentered.current = true;
     }
   }, [position, map])
   return null
@@ -53,7 +56,7 @@ export default function GameMap({ etapes, currentIndex, dernierePosition, onCent
         bounds={bounds}
         minZoom={17}
         maxZoom={18}
-        style={{ height: '70vh', width: '80%', margin:'20px auto', borderRadius:10 }}
+        style={{ height: '100%', width: '100%', borderRadius: '0' }}
         maxBounds={bounds}
         maxBoundsViscosity={1.0}
       >
@@ -85,9 +88,9 @@ export default function GameMap({ etapes, currentIndex, dernierePosition, onCent
           ))}
 
 
-        <Recenter position={dernierePosition} />
+        <RecenterOnce position={dernierePosition} />
       </MapContainer>
-
+{/* 
       <div className="map-actions">
         <button
           className="btn"
@@ -97,13 +100,13 @@ export default function GameMap({ etapes, currentIndex, dernierePosition, onCent
             if (mapRef.current && dernierePosition) {
 
               
-              mapRef.current.panTo([dernierePosition.lat, dernierePosition.lng], {animate: true});
+              mapRef.current.setView([dernierePosition.lat, dernierePosition.lng],17, {animate: false});
             }
           }}
         >
           📌 Moi
         </button>
-      </div>
+      </div> */}
     </div>
   )
 }

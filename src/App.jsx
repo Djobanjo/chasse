@@ -121,6 +121,20 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
   function normaliser(s){ return String(s||'').trim().toLowerCase().normalize('NFD').replace(/['\u0300-\u036f']/g,'').replace(/\s+/g,' ') }
 
 
+  useEffect(() => {
+    if (navigator.permissions) {
+      navigator.permissions.query({ name: 'geolocation' }).then((result) => {
+        setGeolocActive(result.state === 'granted');
+        result.onchange= () => {
+          setGeolocActive(result.state === 'granted');
+          if (result.state === 'denied') {
+            setEtatTexte('❌ Géolocalisation refusée, Veuillez autoriser dans les paramètres du navigateur');
+          }
+        };
+      });
+    }
+  }, []);
+
   useEffect(()=>{
     return ()=>{
       if (watchIdRef.current !== null) navigator.geolocation.clearWatch(watchIdRef.current)
@@ -129,36 +143,47 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
 
   function lancerWatchPosition(){
     if (!navigator.geolocation) { alert("La géolocalisation n'est pas supportée."); return }
-    const id = navigator.geolocation.watchPosition(pos => {
-      const lat = pos.coords.latitude, lng = pos.coords.longitude
-      setEtatTexte(`Position: ${lat.toFixed(5)}, ${lng.toFixed(5)}`)
 
-      setDernierePosition({lat, lng})
-      dernierePositionRef.current = { lat, lng } // Met à jour la ref
-
-      if (etapes.length === 0){
-        const init = buildInitialSteps(lat,lng)
-        setEtapes(init)
-      }
-
-      // proximity check avec distance réelle
-      const current = etapes[etapeActuelle]
-      if (current && !current.valide){
-        const dist = distanceEnMetres(lat, lng, current.lat, current.lng)
-        console.log(`Distance à l'étape "${current.nom}": ${dist.toFixed(2)} mètres`) //<== A SUPP
-        if (dist < 20){  
-          setEtatTexte(`🔔 Proche de: ${current.nom} (distance: ${dist.toFixed(1)}m)`)
-          console.log(`etape acut:${etapeActuelle}`)
-          setEnigmeIndex(etapeActuelle)
+    if(navigator.permissions) {
+      navigator.permissions.query({ name: 'geolocation' }).then((result) => {
+        if (result.state === 'denied') {
+          alert("❌ Géolocalisation refusée, Veuillez changer les paramètres pour l'activer.");
+          setEtatTexte('❌ Géolocalisation refusée');
+          return;
         }
-      }
 
-    }, err => { alert('Erreur de géolocalisation: '+err.message) }, { enableHighAccuracy:true, maximumAge:10000, timeout:20000 })
+        const id = navigator.geolocation.watchPosition(pos => {
+          const lat = pos.coords.latitude, lng = pos.coords.longitude
+          setEtatTexte(`Position: ${lat.toFixed(5)}, ${lng.toFixed(5)}`)
 
-    watchIdRef.current = id
-    localStorage.setItem('geolocActive','true')
-    setGeolocActive(true)
-    setEtatTexte('🟢 Géolocalisation activée')
+          setDernierePosition({lat, lng})
+          dernierePositionRef.current = { lat, lng } // Met à jour la ref
+
+          if (etapes.length === 0){
+            const init = buildInitialSteps(lat,lng)
+            setEtapes(init)
+          }
+
+          // proximity check avec distance réelle
+          const current = etapes[etapeActuelle]
+          if (current && !current.valide){
+            const dist = distanceEnMetres(lat, lng, current.lat, current.lng)
+            console.log(`Distance à l'étape "${current.nom}": ${dist.toFixed(2)} mètres`) //<== A SUPP
+            if (dist < 20){  
+              setEtatTexte(`🔔 Proche de: ${current.nom} (distance: ${dist.toFixed(1)}m)`)
+              console.log(`etape acut:${etapeActuelle}`)
+              setEnigmeIndex(etapeActuelle)
+            }
+          }
+        }, err => { 
+          alert('Erreur de géolocalisation: '+err.message) }, { enableHighAccuracy:true, maximumAge:10000, timeout:20000 })
+
+        watchIdRef.current = id
+        localStorage.setItem('geolocActive','true')
+        setGeolocActive(true)
+        setEtatTexte('🟢 Géolocalisation activée')
+      });
+    }
   }
 
   function arreterWatchPosition(){
@@ -223,10 +248,10 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
 
   return (
     <div>
-      <header className="app-header"><h1>Chasse au trésor par Python de la fournaise</h1></header>
+      {/* <header className="app-header"><h1>Chasse au trésor </h1></header> */}
       <main className="container">
         <div className="topbar">
-          <div id="etat">{etatTexte}</div>
+          <div id="etat"><span>{etatTexte}</span></div>
           {!geolocActive ? (
             <button className="btnActivLoc"
             onClick={lancerWatchPosition}>🟢 Activer la géolocalisation</button>
@@ -236,7 +261,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
           )}
         </div>
        
-
+      <div className="map-container">
         { <GameMap
           etapes={etapes}
           currentIndex={etapeActuelle}
@@ -244,7 +269,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
           // onCenterRequested={recentrerSurMoi}
           mapRef={mapRef}
         />}
-
+      </div>
         {enigmeIndex !== null && etapes[enigmeIndex] && (
           <EnigmeModal
             etape={etapes[enigmeIndex]}
