@@ -49,6 +49,13 @@ const stepIcon = L.icon({ iconUrl: 'https://cdn-icons-png.flaticon.com/512/252/2
 export default function GameMap({ etapes, currentIndex, dernierePosition, onCenterRequested }) {
   // Ajoute une ref pour stocker l'instance de la carte Leaflet
   const mapRef = useRef(null)
+    
+    useEffect(() => {
+    if (mapRef.current) {
+      mapRef.current.invalidateSize();
+      
+    }
+  }, []);
 
   return (
     <div className="map-wrap">
@@ -83,7 +90,18 @@ export default function GameMap({ etapes, currentIndex, dernierePosition, onCent
           })
           .map((e, idx) => (
             <Marker key={e.id || idx} position={[e.lat, e.lng]} icon={stepIcon}>
-              <Popup>{e.valide ? `✅ ${e.nom}` : e.nom}</Popup>
+              <Popup>
+               <div style= {{textAlign:'center'}}>
+                  <h3>{e.valide ? `✅ ${e.nom}` : e.nom}</h3>
+                  {e.image && (
+                    <img
+                      src={e.image}
+                      alt={e.nom}
+                      style={{ width: '100%', objectFit: 'contain', marginTop: '5px' }}
+                    />
+                  )}
+                </div>
+              </Popup>
             </Marker>
           ))}
 

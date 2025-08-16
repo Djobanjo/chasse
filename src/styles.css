@@ -1,14 +1,44 @@
 :root { font-family: Arial, Helvetica, sans-serif; }
 body { margin:0; background:#ffffff; }
 .app-header { background:#1e1e73; color:#fafafa; padding:1rem; text-align:center; }
-.container { padding:12px; max-width:none; margin:0 auto; }
+.container { padding:12px; max-width:auto; margin:0 auto; }
 .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
 #etat { background:#fafafa; padding:8px 12px; border-radius:8px; box-shadow:0 1px 6px rgba(0,0,0,0.08); font-weight:bold; }
 .controls { display:flex; gap:8px; }
 .btn { background:#2c3e50; color:#fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; }
-.btnActivLoc { background:#33b86a; color: #fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; }
-.btnDisacLoc { background:#c0392b; color: #fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; }
+.btnActivLoc { background:#33b86a; color: #fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; font-weight: bold;}
+.btnDisacLoc { background:#c0392b; color: #fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer;font-weight: bold; }
 .btn-stop { background:#c0392b; }
+
+.team-name-input {
+  font-size: 17px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  width: 90%;
+  box-sizing: border-box;
+}
+.team-name-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;        /* espace entre h2, input et bouton */
+  width: 110%;
+  box-sizing: border-box;
+  padding: 12px;
+}
+
+.btnValideName {
+  font-size:17px;
+  transform: translate(120%, 10%);
+  background:#2c3e50; color:#fff;
+  border:none;
+  width: 25%;
+  padding:8px 12px;
+  border-radius:6px; 
+  cursor:pointer;
+
+}
+
 .map-container {
   width: 100%;
   max-width: none;
@@ -36,11 +66,11 @@ body { margin:0; background:#ffffff; }
   align-items: center;
   z-index: 3000; /* au-dessus de la carte */
 }
-.overlay-modal {
-  position: absolute;
-  top: 50%; left: 50%;
+.overlay-modal  {
+  position: fixed;
+  top: 51%; left: 47%;
   transform: translate(-50%, -50%);
-  width: 90%;
+  width: 30%;
   max-width: 400px;
   padding: 16px;
   background: #fff;
@@ -50,43 +80,76 @@ body { margin:0; background:#ffffff; }
   gap: 12px;
   z-index: 3000; /* au-dessus du flou */
   box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  
 }
+
 
 
 @media (max-width: 768px) {
-.map-wrapper {
-  position: relative; /* nécessaire pour que l'overlay soit positionné au-dessus */
-  width: 100%;
-  flex: 1;
-}
+  .map-wrapper {
+    position: relative; /* nécessaire pour que l'overlay soit positionné au-dessus */
+    width: 100%;
+    flex: 1;
+  }
 
-.overlay-blur-map {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(8px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 3000; /* au-dessus de la carte */
-}
+  .team-name-input {
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
 
-.overlay-modal {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 300px;
-  padding: 16px;
-  background: #fff;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 3000; /* au-dessus du flou */
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-}
+  .btnValideName {
+    font-size:16px;
+    transform: translate(140%, 10%);
+    background:#2c3e50; color:#fff;
+    border:none;
+    width: 25%;
+    padding:8px 12px;
+    border-radius:6px; 
+    cursor:pointer;
+
+  }
+
+  .team-name-modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;        /* espace entre h2, input et bouton */
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1px;
+  }
+
+  .overlay-blur-map {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000; /* au-dessus de la carte */
+  }
+
+  .overlay-modal {
+    position: absolute;
+    top: 35%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 300px;
+    min-width: 350px;
+    padding: 16px;
+    background: #fff;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 3000; /* au-dessus du flou */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  }
 
   .container{
     display: flex;
@@ -103,7 +166,8 @@ body { margin:0; background:#ffffff; }
     padding: 8px;
     flex-shrink: 0;
   }
-    .map-container {
+
+  .map-container {
     flex: 1;
     width: 100%;
     display: flex;
@@ -116,7 +180,7 @@ body { margin:0; background:#ffffff; }
     width: 100%; 
     margin:0;
     border-radius: 0;  
-    height: 100%;     
+    height: 100vh;     
   }
 
   #etat {
@@ -170,4 +234,4 @@ body { margin:0; background:#ffffff; }
 /*.map-actions { text-align:center; margin-top:8px; }*/
 .enigme-modal { position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); background:#fff; padding:18px; border-radius:12px; box-shadow:0 6px 30px rgba(0,0,0,0.2); width:90%; max-width:420px; max-height: 80vh; overflow-y: auto; z-index:2000; box-sizing: border-box; }
 .enigme-modal input { width:100%; padding:8px; margin-top:8px; border-radius:6px; border:1px solid #ccc; }
-.modal-actions { margin-top:12px; display:flex; gap:8px; justify-content:flex-end; }
+.modal-actions { margin-top:12px; display:flex; gap:8px; justify-content:flex-end; } 

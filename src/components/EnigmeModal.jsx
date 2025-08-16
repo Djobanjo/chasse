@@ -4,6 +4,18 @@ export default function EnigmeModal({ etape, reponse, onChangeReponse, onValidat
   return (
     <div className="enigme-modal">
       <h2>{etape.nom}</h2>
+      {etape.image && (
+        <img 
+          src={etape.image} 
+          alt={etape.nom} 
+          style={{
+            width: '100%',
+            maxHeight: '200px',
+            objectFit: 'contain',
+            marginBottom: '10px'
+          }} 
+        />
+      )}
       <p>{etape.enigme}</p>
       <input type="text" value={reponse} onChange={e => onChangeReponse(e.target.value)} placeholder="Tape ta réponse ici" />
       <div className="modal-actions">

@@ -47,7 +47,8 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         lat: -20.901010,
         lng: 55.484410,
         reponses: ['1','un','Un'],
-        valide: false
+        valide: false,
+        image:'/images/enigme_1.jpg'
       },
       {
         id: 'bat-S2',
@@ -174,10 +175,10 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
           const current = etapes[etapeActuelle]
           if (current && !current.valide){
             const dist = distanceEnMetres(lat, lng, current.lat, current.lng)
-            console.log(`Distance à l'étape "${current.nom}": ${dist.toFixed(2)} mètres`) //<== A SUPP
+            // console.log(`Distance à l'étape "${current.nom}": ${dist.toFixed(2)} mètres`) //<== A SUPP
             if (dist < 20){  
               setEtatTexte(`🔔 Proche de: ${current.nom} (distance: ${dist.toFixed(1)}m)`)
-              console.log(`etape acut:${etapeActuelle}`)
+              // console.log(`etape acut:${etapeActuelle}`)
               setEnigmeIndex(etapeActuelle)
             }
           }
