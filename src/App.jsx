@@ -48,15 +48,16 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         lng: 55.484410,
         reponses: ['1','un','Un'],
         valide: false,
-        image:'/images/enigme_1.jpg'
+        image:'enigme_1.jpg'
       },
       {
         id: 'bat-S2',
         nom: '🎯 enigme n°2',
-        lat: -20.901278,
-        lng: 55.484438,
+        lat: -20.90137,
+        lng: 55.484837,
         reponses: ['2','deux','Deux'],
-        valide: false
+        valide: false,
+        image:'enigme_2.jpg'
       },
       {
         id: 'amphi-a',
@@ -72,7 +73,8 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         lat: -20.901450,
         lng: 55.483020,
         reponses: ['4','quatre','Quatre'],
-        valide: false
+        valide: false,
+        image:'enigme_4.jpg'
       },
       {
         id:'cafet',
@@ -80,7 +82,8 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         lat: -20.901990,
         lng: 55.483500,
         reponses: ['5','cinq','Cinq'],
-        valide: false
+        valide: false,
+        image:'enigme_5.jpg'
       },
       {
         id:'RU',
@@ -88,15 +91,17 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         lat: -20.902310,
         lng: 55.483800,
         reponses: ['6','six','Six'],
-        valide: false
+        valide: false,
+        image:'enigme_6.jpg'
       },
       {
         id:'amphi-cadet',
         nom: '🎯 enigme n°7',
-        lat: -20.902200,
-        lng: 55.484270,
+        lat: -20.902317,
+        lng: 55.484320,
         reponses: ['7','sept','Sept'],
-        valide: false
+        valide: false,
+        image:'enigme_7.jpg'
       },
       {
         id:'bat-soin',
@@ -104,7 +109,8 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         lat: -20.902700,
         lng: 55.484570,
         reponses: ['8','huit','Huit'],
-        valide: false
+        valide: false,
+        image:'enigme_8.jpg'
       },
       {
         id:'amphi-550',
@@ -112,7 +118,8 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         lat: -20.902390,
         lng: 55.485570,
         reponses: ['9','neuf','Neuf'],
-        valide: false
+        valide: false,
+        image:'enigme_9.jpg'
       },
       {
         id:'distrib',
@@ -120,7 +127,8 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         lat: -20.901900,
         lng: 55.485710,
         reponses: ['10','dix','Dix'],
-        valide: false
+        valide: false,
+        image:'enigme_10.jpg'
       }
     ]
   }

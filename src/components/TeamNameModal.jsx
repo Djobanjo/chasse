@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import skull from '../assets/skull.svg';
+import ancre from '../assets/ancre.svg';
 
 export default function TeamNameModal({ onSave }) {
   const [name, setName] = useState("");
@@ -16,7 +18,10 @@ export default function TeamNameModal({ onSave }) {
 
   return (
     <form className="team-name-modal-content" onSubmit={handleSubmit}>
-      <h2>Entrez le nom de votre équipe</h2>
+      <h2><img src={skull} alt="skull" className="icon-left" />
+        Entrez le nom de votre Equipe
+        <img src={ancre} alt="ancre" className="icon-right" />
+      </h2>
       <input
         className="team-name-input"
         type="text"

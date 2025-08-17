@@ -1,5 +1,5 @@
 :root { font-family: Arial, Helvetica, sans-serif; }
-body { margin:0; background:#ffffff; }
+body { margin:0; background:#143c6e; }
 .app-header { background:#1e1e73; color:#fafafa; padding:1rem; text-align:center; }
 .container { padding:12px; max-width:auto; margin:0 auto; }
 .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
@@ -11,32 +11,80 @@ body { margin:0; background:#ffffff; }
 .btn-stop { background:#c0392b; }
 
 .team-name-input {
-  font-size: 17px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 8px;
+  font-size: 16px;
+  border: 3px solid #f4d03f;
+  border-radius: 10px;
+  padding: 10px;
   width: 90%;
   box-sizing: border-box;
+  text-align: center;
+  background: #ffd700;
+  color: #143c6e;
+  font-family: 'Press Start 2P', cursive, Arial, sans-serif;
 }
+
+.team-name-input::placeholder {
+  color: #fbf8f8;
+}
+
 .team-name-modal-content {
   display: flex;
   flex-direction: column;
-  gap: 12px;        /* espace entre h2, input et bouton */
-  width: 110%;
-  box-sizing: border-box;
-  padding: 12px;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  width: 105%;
+  background: #143c6e;
+  border: 6px solid #ffd700;
+  border-radius: 12px;
+  box-shadow: 
+    inset 0 0 6px #000,
+    0 0 15px rgba(195, 185, 152, 0.6);
+  font-family: 'Press Start 2P', cursive, Arial, sans-serif;
+  text-align: center;
+  position: relative;
+}
+.team-name-modal-content h2 {
+  color: #ffd700;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0px #000;
+  margin: 0;
+  display: flex;
+  white-space: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
 }
 
-.btnValideName {
-  font-size:17px;
-  transform: translate(120%, 10%);
-  background:#2c3e50; color:#fff;
-  border:none;
-  width: 25%;
-  padding:8px 12px;
-  border-radius:6px; 
-  cursor:pointer;
+.icon-left{
+  width: 32px;
+  height: 32px;
+}
+.icon-right {
+  width: 24px;
+  height: 25px;
+}
 
+
+.btnValideName {
+  font-size: 14px;
+  background: #f4d03f;
+  color: #143c6e;
+  border: none;
+  width: auto;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Press Start 2P', cursive, Arial, sans-serif;
+  box-shadow: 0px 5px 0px #c9a326;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.btnValideName:hover {
+  transform: scale(1.05);
+  background: #ffd700;
 }
 
 .map-container {
@@ -53,7 +101,11 @@ body { margin:0; background:#ffffff; }
   height: 100vh;         /*70vh*/
   width: 100%;           /*80%*/
   margin: 12px 0;    /*20px auto*/
-  border-radius: 10;  /*10px*/
+  border-radius: 10px;
+  border-radius: 12px; /* arrondi des coins */
+  border: 6px solid #ffd700; /* couleur du cadre, ici doré */
+  box-shadow: 0 0 15px rgba(0,0,0,0.2); /* léger effet 3D */
+  box-sizing: border-box; /* pour que le border soit inclus */
 }
 .overlay-blur-map {
   position: absolute;
@@ -68,24 +120,30 @@ body { margin:0; background:#ffffff; }
 }
 .overlay-modal  {
   position: fixed;
-  top: 51%; left: 47%;
+  top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 30%;
-  max-width: 400px;
-  padding: 16px;
-  background: #fff;
-  border-radius: 12px;
+  width: 90%;
+  max-width: 420px;
+  padding: 20px;
+  border-radius: 20px;
+  background: transparent; /* pour laisser voir le cadre bleu/or */
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 3000; /* au-dessus du flou */
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
   
 }
 
 
 
 @media (max-width: 768px) {
+  .team-name-input,
+  .btnValideName,
+  .team-name-modal-content,
+  .team-name-modal-content h2 {
+    font-family: 'Press Start 2P', cursive, Arial, sans-serif;
+  }
+
   .map-wrapper {
     position: relative; /* nécessaire pour que l'overlay soit positionné au-dessus */
     width: 100%;
@@ -94,32 +152,68 @@ body { margin:0; background:#ffffff; }
 
   .team-name-input {
     font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 8px;
-    width: 100%;
+    border: 3px solid #f4d03f;
+    border-radius: 10px;
+    padding: 10px;
+    width: 90%;
     box-sizing: border-box;
+    text-align: center;
+    background: #ffd700;
+    color: #143c6e;
+    
   }
 
+  .btnValideName:hover {
+  transform: scale(1.05);
+  background: #ffd700;
+}
   .btnValideName {
-    font-size:16px;
-    transform: translate(140%, 10%);
-    background:#2c3e50; color:#fff;
-    border:none;
-    width: 25%;
-    padding:8px 12px;
-    border-radius:6px; 
-    cursor:pointer;
-
+    font-size: 12px;
+    background: #f4d03f;
+    color: #143c6e;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    width: 120px;
+    font-family: 'Press Start 2P', cursive, Arial, sans-serif;
+    text-align: center;
+    box-shadow: 0px 5px 0px #c9a326;
+    transition: transform 0.2s, background 0.2s;
   }
+  .team-name-input::placeholder {
+  color: #fbf8f8;
+  font-size: 14px;;
+}
+
+  
+  .team-name-modal-content h2 {
+    color: #ffd700;
+    font-size: 9px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0px #000;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+}
 
   .team-name-modal-content {
     display: flex;
     flex-direction: column;
-    gap: 10px;        /* espace entre h2, input et bouton */
-    width: 100%;
-    box-sizing: border-box;
-    padding: 1px;
+    align-items: center;
+    gap: 20px;
+    padding: 30px;
+    width: 80%;
+    max-width: 420px;
+    background: #143c6e;
+    border: 6px solid #ffd700;
+    border-radius: 12px;
+    box-shadow: inset 0 0 6px #000, 0 0 15px rgba(195, 185, 152, 0.6);
+    text-align: center;
+    position: relative;
   }
 
   .overlay-blur-map {
@@ -135,26 +229,32 @@ body { margin:0; background:#ffffff; }
   }
 
   .overlay-modal {
-    position: absolute;
-    top: 35%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 300px;
-    min-width: 350px;
-    padding: 16px;
-    background: #fff;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    z-index: 3000; /* au-dessus du flou */
-    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 95%;
+  max-width: 420px;
+  padding: 20px;
+  border-radius: 20px;
+  background: transparent; /* pour laisser voir le cadre bleu/or */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  }
+  .icon-left{ /*icone crane*/
+  width: 32px;
+  height: 32px;
+  }
+  .icon-right { /*icone ancre*/
+  width: 20px;
+  height: 25px;
   }
 
   .container{
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
     padding: 0;
     max-width: 100%;
   }
@@ -176,6 +276,7 @@ body { margin:0; background:#ffffff; }
   }
 
   .map-wrap {
+    max-height: 600px;
     flex: 1;   
     width: 100%; 
     margin:0;
@@ -224,11 +325,6 @@ body { margin:0; background:#ffffff; }
     font-weight: bold; 
   }
 }
-
-
-
-
-
 
 
 /*.map-actions { text-align:center; margin-top:8px; }*/

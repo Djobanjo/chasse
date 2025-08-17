@@ -81,13 +81,13 @@ export default function GameMap({ etapes, currentIndex, dernierePosition, onCent
         
 
         {etapes
-          .filter((e, idx) => {
-            if (e.id === 'start') return true;         // toujours afficher point de départ
-            if (idx < currentIndex) return true;        // afficher étapes déjà validées
-            if (idx === currentIndex) return true;      // afficher étape actuelle (même si pas encore validée)
+          // .filter((e, idx) => {
+          //   if (e.id === 'start') return true;         
+          //   if (idx < currentIndex) return true;        
+          //   if (idx === currentIndex) return true;      
             
-            return false;                               // cacher les suivantes
-          })
+          //   return false;                               
+          // })
           .map((e, idx) => (
             <Marker key={e.id || idx} position={[e.lat, e.lng]} icon={stepIcon}>
               <Popup>
@@ -95,9 +95,9 @@ export default function GameMap({ etapes, currentIndex, dernierePosition, onCent
                   <h3>{e.valide ? `✅ ${e.nom}` : e.nom}</h3>
                   {e.image && (
                     <img
-                      src={e.image}
+                      src={`${import.meta.env.BASE_URL}images/${e.image}`}
                       alt={e.nom}
-                      style={{ width: '100%', objectFit: 'contain', marginTop: '5px' }}
+                      style={{ width: '80%', objectFit: 'contain', marginTop: '5px' }}
                     />
                   )}
                 </div>
@@ -108,23 +108,7 @@ export default function GameMap({ etapes, currentIndex, dernierePosition, onCent
 
         <RecenterOnce position={dernierePosition} />
       </MapContainer>
-{/* 
-      <div className="map-actions">
-        <button
-          className="btn"
-          // disabled={!mapRef.current || !dernierePosition}
-          onClick={() => {
-            console.log('Dernière position:', dernierePosition)
-            if (mapRef.current && dernierePosition) {
 
-              
-              mapRef.current.setView([dernierePosition.lat, dernierePosition.lng],17, {animate: false});
-            }
-          }}
-        >
-          📌 Moi
-        </button>
-      </div> */}
     </div>
   )
 }
