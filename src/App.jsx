@@ -3,7 +3,7 @@ import GameMap from './components/GameMap'
 import EnigmeModal from './components/EnigmeModal'
 import TeamNameModal from './components/TeamNameModal';
 import FelicitationPage from './components/FelicitationPage';
-
+import { hashPBKDF2 } from './utils/hash';
 
 
 
@@ -27,6 +27,7 @@ export default function App(){
   return deg * (Math.PI / 180);
 }
 
+
 function distanceEnMetres(lat1, lng1, lat2, lng2) {
   const R = 6371000; // rayon Terre en mètres
   const dLat = deg2rad(lat2 - lat1);
@@ -43,97 +44,108 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
     return [
       {
         id: 'bat-S4a',
-        nom: '🎯 enigme n°1',
+        nom: '🎯enigme n°1',
         lat: -20.901010,
         lng: 55.484410,
-        reponses: ['1','un','Un'],
+        reponses: ['b8bbfebf460922fa97036bed5cf939b2c00382da420d66c7f978f137bf40a81e','0331abfff99f7ade250c8f48e1bfe9643aba48b0c5dbb9e28c68a255b52b9b37','78dedc26de9b40a973ad2e660b7ca18c38c11df52d30728c94c0a1feb7e577e1','c7c783e65aefe47bc122f17c8cbfa0638218d4721de32cea0ac030579c2150f7'],
         valide: false,
-        image:'enigme_1.jpg'
+        image:'enigme_1.jpg',
+        description:'Bâtiment S4A - S4B'
       },
       {
         id: 'bat-S2',
-        nom: '🎯 enigme n°2',
+        nom: '🎯enigme n°2',
         lat: -20.90137,
         lng: 55.484837,
         reponses: ['2','deux','Deux'],
         valide: false,
-        image:'enigme_2.jpg'
+        image:'enigme_2.jpg',
+        description:'Bâtiment S2'
       },
       {
         id: 'amphi-a',
-        nom: '🎯 enigme n°3',
+        nom: '🎯enigme n°3',
         lat: -20.901500,
         lng: 55.483870,
         reponses: ['3','trois','Trois'],
-        valide: false
+        valide: false,
+        description:'Amphi Charpak'
       },
       {
         id: 'bu-sciences',
-        nom: '🎯 enigme n°4',
+        nom: '🎯enigme n°4',
         lat: -20.901450,
         lng: 55.483020,
         reponses: ['4','quatre','Quatre'],
         valide: false,
-        image:'enigme_4.jpg'
+        image:'enigme_4.jpg',
+        description:'Bibliothèque Universitaire'
       },
       {
         id:'cafet',
-        nom: '🎯 enigme n°5',
+        nom: '🎯enigme n°5',
         lat: -20.901990,
         lng: 55.483500,
         reponses: ['5','cinq','Cinq'],
         valide: false,
-        image:'enigme_5.jpg'
+        image:'enigme_5.jpg',
+        description: 'Caféteria'
+
       },
       {
         id:'RU',
-        nom: '🎯 enigme n°6',
+        nom: '🎯enigme n°6',
         lat: -20.902310,
         lng: 55.483800,
         reponses: ['6','six','Six'],
         valide: false,
-        image:'enigme_6.jpg'
+        image:'enigme_6.jpg',
+        description:'Restaurant Universitaire'
       },
       {
         id:'amphi-cadet',
-        nom: '🎯 enigme n°7',
+        nom: '🎯enigme n°7',
         lat: -20.902317,
         lng: 55.484320,
         reponses: ['7','sept','Sept'],
         valide: false,
-        image:'enigme_7.jpg'
+        image:'enigme_7.jpg',
+        description: 'Amphi Cadet'
       },
       {
         id:'bat-soin',
-        nom: '🎯 enigme n°8',
+        nom: '🎯enigme n°8',
         lat: -20.902700,
         lng: 55.484570,
         reponses: ['8','huit','Huit'],
         valide: false,
-        image:'enigme_8.jpg'
+        image:'enigme_8.jpg',
+        description: 'SUMPPS'
       },
       {
         id:'amphi-550',
-        nom: '🎯 enigme n°9',
+        nom: '🎯enigme n°9',
         lat: -20.902390,
         lng: 55.485570,
         reponses: ['9','neuf','Neuf'],
         valide: false,
-        image:'enigme_9.jpg'
+        image:'enigme_9.jpg',
+        description: 'Amphi 550/Bioclimatique'
       },
       {
         id:'distrib',
-        nom: '🎯 enigme n°10',
+        nom: '🎯enigme n°10',
         lat: -20.901900,
         lng: 55.485710,
         reponses: ['10','dix','Dix'],
         valide: false,
-        image:'enigme_10.jpg'
+        image:'enigme_10.jpg',
+        description: "On est content de le voir quand on a de l'argent !!"
       }
     ]
   }
 
-  function normaliser(s){ return String(s||'').trim().toLowerCase().normalize('NFD').replace(/['\u0300-\u036f']/g,'').replace(/\s+/g,' ') }
+  // function normaliser(s){ return String(s||'').trim().toLowerCase().normalize('NFD').replace(/['\u0300-\u036f']/g,'').replace(/\s+/g,' ') }
 
 
   useEffect(() => {
@@ -205,6 +217,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
     if (watchIdRef.current !== null){ navigator.geolocation.clearWatch(watchIdRef.current); watchIdRef.current = null }
     setGeolocActive(false)
     setEtatTexte('🛑 Géolocalisation arrêtée')
+    localStorage.removeItem('geolocActive');
   }
 
   const mapRef = useRef(null);
@@ -219,32 +232,33 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
   // }
 
 
-  function validerReponse(){
+async function validerReponse() {
+  if (enigmeIndex === null) return;
 
-    if (enigmeIndex === null) return
-    const user = normaliser(reponseTemp)
-    const bonnes = etapes[enigmeIndex].reponses.map(normaliser)
-    if (bonnes.includes(user)){
-      // marque validé
-      setEtapes(prev => prev.map((e,i) => i===enigmeIndex ? {...e, valide:true} : e))
-      setEtatTexte(`✔️ Étape validée : ${etapes[enigmeIndex]?.nom || ''}`)
-      setEnigmeIndex(null)
-      setReponseTemp('')
-      // avancer
-      setEtapeActuelle(prev => {
-        const n = prev + 1
-        if (n >= etapes.length) { 
-          setEtatTexte('🎉 Chasse au trésor terminée !'); 
-          setFinished(true);
-        }
-        return n;
-      })
-    } else {
-      setEtatTexte('❌ Mauvaise réponse. Essaie encore !')
-    }
-    
+  const user =reponseTemp;
+  const userHash = await hashPBKDF2(user);
 
+  const hashes = etapes[enigmeIndex].reponses;
+
+  if (hashes.includes(userHash)) {
+    // réponse correcte
+    setEtapes(prev => prev.map((e, i) => i === enigmeIndex ? { ...e, valide: true } : e));
+    setEtatTexte(`✔️ Étape validée : ${etapes[enigmeIndex]?.nom || ''}`);
+    setEnigmeIndex(null);
+    setReponseTemp('');
+    setEtapeActuelle(prev => {
+      const n = prev + 1;
+      if (n >= etapes.length) {
+        setEtatTexte('🎉 Chasse au trésor terminée !');
+        setFinished(true);
+      }
+      return n;
+    });
+  } else {
+    setEtatTexte('❌ Mauvaise réponse. Essaie encore !');
   }
+}
+
   useEffect(() => {
       if (!dernierePosition) return;
 
@@ -306,15 +320,19 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         )}
       </div>
         {enigmeIndex !== null && etapes[enigmeIndex] && (
-          <EnigmeModal
-            etape={etapes[enigmeIndex]}
-            reponse={reponseTemp}
-            onChangeReponse={setReponseTemp}
-            onValidate={validerReponse}
-            onCancel={() => { setEnigmeIndex(null); setReponseTemp('') }}
-          />
+          <>
+            <div className="modal-overlay" onClick={() => setEnigmeIndex(null)}></div>
+            <div className="modal-container">
+              <EnigmeModal
+                etape={etapes[enigmeIndex]}
+                reponse={reponseTemp}
+                onChangeReponse={setReponseTemp}
+                onValidate={validerReponse}
+                onCancel={() => { setEnigmeIndex(null); setReponseTemp('') }}
+              />
+            </div>
+          </>
         )}
-
       </main>
     </div>
   )

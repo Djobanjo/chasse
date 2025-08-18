@@ -1,5 +1,5 @@
 node_modules/
 dist/
 .env
-hash.jsx
+hashLocal.js
 valideHash.jsx

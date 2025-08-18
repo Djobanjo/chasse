@@ -1,6 +1,34 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { MapContainer, TileLayer, Marker, Popup, useMap, ImageOverlay } from 'react-leaflet'
+import { createPortal } from 'react-dom';
 import L from 'leaflet'
+
+function ImageModal({ image, title, description, onClose }) {
+  if (!image) return null;
+
+  return createPortal(
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" 
+    style={{ zIndex: 10000 }}>
+      <div className="bg-white rounded-2xl shadow-xl p-4 max-w-md w-full max-h-[80vh] overflow-auto relative">
+        <button
+          onClick={onClose}
+          className="modal-close-btn">X
+        </button>
+        <h2 className="titleEnigme">{title}</h2>
+        <img
+          src={image}
+          alt={title}
+          className="rounded-xl shadow-md"
+          style={{ maxHeight: '50vh', width: 'auto', height: 'auto' }}
+        />
+        {description && (
+          <p className="descriptionPop">{description}</p>
+        )}
+      </div>
+    </div>,
+    document.body
+  );
+}
 
 
 function GetMapInstance({ setMapInstance }) {
@@ -11,7 +39,8 @@ function GetMapInstance({ setMapInstance }) {
     }
   }, [map, setMapInstance]);
   return null;
-}
+  }
+  
 
 
 function RecenterOnce({ position }){
@@ -49,6 +78,10 @@ const stepIcon = L.icon({ iconUrl: 'https://cdn-icons-png.flaticon.com/512/252/2
 export default function GameMap({ etapes, currentIndex, dernierePosition, onCenterRequested }) {
   // Ajoute une ref pour stocker l'instance de la carte Leaflet
   const mapRef = useRef(null)
+  const [modalImage, setModalImage] = useState(null)
+  const [modalTitle, setModalTitle] = useState("")
+  const [modalDescription, setModalDescription] = useState("");
+
     
     useEffect(() => {
     if (mapRef.current) {
@@ -90,14 +123,20 @@ export default function GameMap({ etapes, currentIndex, dernierePosition, onCent
           })
           .map((e, idx) => (
             <Marker key={e.id || idx} position={[e.lat, e.lng]} icon={stepIcon}>
-              <Popup>
+              <Popup closeOnClick={false} autoClose={false}>
                <div style= {{textAlign:'center'}}>
                   <h3>{e.valide ? `✅ ${e.nom}` : e.nom}</h3>
                   {e.image && (
                     <img
                       src={`${import.meta.env.BASE_URL}images/${e.image}`}
                       alt={e.nom}
-                      style={{ width: '80%', objectFit: 'contain', marginTop: '5px' }}
+                      style={{ width: '80%', objectFit: 'contain', marginTop: '5px', cursor: 'pointer', pointerEvents: 'auto',touchAction:'none' }}
+                      onClick={(ev) => {
+                        ev.stopPropagation() // 🔑 bloque Leaflet de récupérer le clic
+                        setModalImage(`${import.meta.env.BASE_URL}images/${e.image}`)
+                        setModalTitle(e.nom);
+                        setModalDescription(e.description );
+                      }}
                     />
                   )}
                 </div>
@@ -108,6 +147,12 @@ export default function GameMap({ etapes, currentIndex, dernierePosition, onCent
 
         <RecenterOnce position={dernierePosition} />
       </MapContainer>
+      <ImageModal
+        image={modalImage}
+        title={modalTitle}
+        description={modalDescription}
+        onClose={() => setModalImage(null)}
+      />
 
     </div>
   )
