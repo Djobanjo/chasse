@@ -256,15 +256,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
   }
 
   const mapRef = useRef(null);
-  // function recentrerSurMoi(mapInstance){
-  //   if (!dernierePosition) {
-  //     alert("Position utilisateur non encore connue.");
-  //   return;
-  //   }
-  //   if (mapInstance && dernierePosition) {
-  //     mapInstance.setView([dernierePosition.lat, dernierePosition.lng], 17);
-  //   }
-  // }
+
 
   const normaliser = s =>
   (s || '')
@@ -278,7 +270,6 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
 async function validerReponse() {
   if (enigmeIndex === null) return;
 
-  // Normaliser la réponse avant de hasher
   const user = normaliser(reponseTemp);
   const userHash = await hashPBKDF2(user);
 
@@ -291,29 +282,30 @@ async function validerReponse() {
     setEnigmeIndex(null);
     setReponseTemp('');
 
-    if (enigmeIndex === 0) {
-      setFinished(true);
-      setEtatTexte('🎉 Félicitations ! La chasse est terminée !');
-      setEtapes(prev => prev.map(e => ({ ...e, valide: true })));
-    } else {
-      setEtapeActuelle(prev => prev + 1);
-    }
-  } else {
-    setEtatTexte('❌ Mauvaise réponse. Essaie encore !');
-  }
-}
-//     setEtapeActuelle(prev => {
-//       const n = prev + 1;
-//       if (n >= etapes.length) {
-//         setEtatTexte('🎉 Chasse au trésor terminée !');
-//         setFinished(true);
-//       }
-//       return n;
-//     });
+    /* LES TESTS */
+//     if (enigmeIndex === 0) {
+//       setFinished(true);
+//       setEtatTexte('🎉 Félicitations ! La chasse est terminée !');
+//       setEtapes(prev => prev.map(e => ({ ...e, valide: true })));
+//     } else {
+//       setEtapeActuelle(prev => prev + 1);
+//     }
 //   } else {
 //     setEtatTexte('❌ Mauvaise réponse. Essaie encore !');
 //   }
 // }
+    setEtapeActuelle(prev => {
+      const n = prev + 1;
+      if (n >= etapes.length) {
+        setEtatTexte('🎉 Chasse au trésor terminée !');
+        setFinished(true);
+      }
+      return n;
+    });
+  } else {
+    setEtatTexte('❌ Mauvaise réponse. Essaie encore !');
+  }
+}
 
   useEffect(() => {
       if (!dernierePosition) return;

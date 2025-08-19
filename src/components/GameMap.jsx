@@ -142,13 +142,13 @@ useEffect(() => {
         
 
         {etapes
-          // .filter((e, idx) => {
-          //   if (e.id === 'start') return true;         
-          //   if (idx < currentIndex) return true;        
-          //   if (idx === currentIndex) return true;      
+          .filter((e, idx) => {
+            if (e.id === 'start') return true;         
+            if (idx < currentIndex) return true;        
+            if (idx === currentIndex) return true;      
             
-          //   return false;                               
-          // })
+            return false;                               
+          })
           .map((e, idx) => (
             <Marker key={e.id || idx} position={[e.lat, e.lng]} icon={stepIcon}>
               <Popup closeOnClick={false} autoClose={true}>
