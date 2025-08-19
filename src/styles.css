@@ -37,8 +37,8 @@ body { margin:0; background:#143c6e; }
   box-sizing: border-box;
   z-index: 2000;
   
-  background-position: 35% 2%;
-  background-size: 200%;
+  background-position: 75% 2%;
+  background-size: 400%;
 }
 
 .enigme-modal input { 
@@ -79,13 +79,6 @@ body { margin:0; background:#143c6e; }
 }
 
 
-.descriptionPop {
-  margin-top: 5px;
-  color: #143c6e;
-  font-size: 14px;
-  text-align: center;
-  font-family: 'Press Start 2P', cursive, Arial, sans-serif;
-}
 .titleEnigme {
   position: absolute;
   top: 20px;               
@@ -99,8 +92,8 @@ body { margin:0; background:#143c6e; }
 }
 
 .descriptionPop {
-  position: absolute;   
-  margin-top: 10px;         
+
+  margin-top: 1px;         
   color: #143c6e;
   font-size: 14px;
   text-align: center;
@@ -111,9 +104,17 @@ body { margin:0; background:#143c6e; }
   overflow-y: auto;          
   word-wrap: break-word; 
 }
+.bg-white.rounded-2xl.shadow-xl {
+  display: flex;
+  gap:12px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 
 .rounded-xl {
   position:relative;
+ align-items: center;
   border: 6px solid #f4d03f; /* couleur du cadre, ici doré */
   border-radius: 35px;
 }
@@ -272,6 +273,57 @@ body { margin:0; background:#143c6e; }
   align-items: center;
   z-index: 3000;
   
+}
+
+.overlay {
+
+  position: fixed;   /* ou fixed si tu veux centré écran */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3199;        /* au-dessus du blur */
+}
+.modal{
+  min-height:170px;
+  text-align: center;
+  border: 1px solid #ccc; /* bordure grise */
+  border-radius: 1px;;
+  padding: 16px;
+  flex-direction: column;
+  white-space: nowrap;
+  width: 100%;
+  background: #143c6e;
+  border: 6px solid #ffd700;
+  background-size: 15%;
+  background-repeat: no-repeat;
+  background-position: 2% 5% ;
+}
+.modal h1 {
+  font-family: 'Press Start 2P', cursive, Arial, sans-serif;
+  font-size: 20px;
+  padding:10px;
+}
+.modal h2 {
+  font-family: 'Press Start 2P', cursive, Arial, sans-serif;
+  color: #143c6e;
+  text-align: center;
+  white-space: nowrap;
+  padding:12px;
+  border:1px  solid #ffd700;
+  background: #ffd700;
+
+  border-radius: 1px;
+  margin: 0;
+  font-size: 1.5em;
+}
+#downloadBtn{
+  padding: 8px;
+  cursor: pointer;
+  position:absolute;
+  top:165px;
+  left:257px;
+  border-color: #1e1e73;
+
 }
 
 
@@ -533,8 +585,8 @@ body { margin:0; background:#143c6e; }
   z-index:2000; 
   box-sizing: border-box; 
 
-  background-position: 35% 2%;
-  background-size: 200%;
+  background-position: 75% 2%;
+  background-size: 400%;
 }
 
 .enigme-modal input { 
@@ -548,4 +600,59 @@ body { margin:0; background:#143c6e; }
   margin-top:12px; 
   display:flex; 
   gap:8px; 
-  justify-content:flex-end; }}
+  justify-content:flex-end; 
+}
+.modal h1 {
+  padding: 25px;
+  font-size: 16px;
+  margin: 0;
+}
+  .overlay {
+  position: fixed;   /* ou fixed si tu veux centré écran */
+  width: 100%;
+  transform: translate(-100%, -40%);
+  z-index: 3199;        /* au-dessus du blur */
+}
+.modal{
+  max-width: 80%;          
+  position: relative;
+  top: 50%;               
+  left: 55%;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  padding: 8px;
+  flex-direction: column;
+  width: 80%;
+  background: #143c6e;
+  border: 6px solid #ffd700;
+  background-size: 15%;
+  background-repeat: no-repeat;
+  background-position: 2% 5%;
+}
+
+
+.modal h2 {
+  position: relative;
+  font-family: 'Press Start 2P', cursive, Arial, sans-serif;
+  color: #143c6e;
+  text-align: center;
+  padding: 1px;
+  border: 1px solid #ffd700;
+  background: #ffd700;     
+  word-break: break-word;
+  overflow-wrap: break-word;
+  border-radius: 1px;
+  margin: 0;
+  font-size: clamp(1em, 4vw, 1.2em); /* adapte la taille au viewport */
+}
+#downloadBtn{
+  width: 35%;
+  cursor: pointer;
+  position:relative;
+  top:-55px;
+  left:447px;
+  border-color: #1e1e73;
+
+}
+}

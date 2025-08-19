@@ -57,7 +57,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯enigme n°2',
         lat: -20.90137,
         lng: 55.484837,
-        reponses: ['2','deux','Deux'],
+        reponses: ['674cefbedf88cfb36e9b664d7d08b6b43fba8194580bafb7e9fdcaa1603a39e1','2478fbf4628341ce72a36b4b4b70db69ceb6de6b5911df25bf27a0b063300b9d','cc2a8943a206524b14da8e9386f186c584cd0022918b8e9514b992f6817160f1','3707af693bab3de604f1514f78f1c9d28d4c1a0f16a0135aca2969fab2c82c19'],
         valide: false,
         image:'enigme_2.jpg',
         description:'Bâtiment S2'
@@ -110,7 +110,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         reponses: ['7','sept','Sept'],
         valide: false,
         image:'enigme_7.jpg',
-        description: 'Amphi Cadet'
+        description: 'DOFIP'
       },
       {
         id:'bat-soin',
@@ -119,7 +119,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         lng: 55.484570,
         reponses: ['8','huit','Huit'],
         valide: false,
-        image:'enigme_8.jpg',
+        image:'',
         description: 'SUMPPS'
       },
       {
@@ -246,18 +246,31 @@ async function validerReponse() {
     setEtatTexte(`✔️ Étape validée : ${etapes[enigmeIndex]?.nom || ''}`);
     setEnigmeIndex(null);
     setReponseTemp('');
-    setEtapeActuelle(prev => {
-      const n = prev + 1;
-      if (n >= etapes.length) {
-        setEtatTexte('🎉 Chasse au trésor terminée !');
-        setFinished(true);
-      }
-      return n;
-    });
+        // Vérifier si c'est la première énigme validée
+    if (enigmeIndex === 0) {
+      setFinished(true);
+      setEtatTexte('🎉 Félicitations ! La chasse est terminée !');
+      // Si tu veux, tu peux aussi marquer toutes les étapes comme validées
+      setEtapes(prev => prev.map(e => ({ ...e, valide: true })));
+    } else {
+      setEtapeActuelle(prev => prev + 1);
+    }
   } else {
     setEtatTexte('❌ Mauvaise réponse. Essaie encore !');
   }
 }
+//     setEtapeActuelle(prev => {
+//       const n = prev + 1;
+//       if (n >= etapes.length) {
+//         setEtatTexte('🎉 Chasse au trésor terminée !');
+//         setFinished(true);
+//       }
+//       return n;
+//     });
+//   } else {
+//     setEtatTexte('❌ Mauvaise réponse. Essaie encore !');
+//   }
+// }
 
   useEffect(() => {
       if (!dernierePosition) return;
@@ -294,7 +307,6 @@ async function validerReponse() {
             " onClick={arreterWatchPosition}>🛑 Désactiver la géolocalisation</button>
           )}
         </div>
-       
       <div className="map-wrapper">
         <GameMap
           etapes={etapes}
@@ -333,6 +345,14 @@ async function validerReponse() {
             </div>
           </>
         )}
+        {finished && (
+          <>
+            
+            <FelicitationPage teamName={teamName} className="felicitation" />
+          </>
+        )}
+        
+
       </main>
     </div>
   )

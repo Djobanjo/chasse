@@ -19,7 +19,7 @@ function ImageModal({ image, title, description, onClose }) {
           src={image}
           alt={title}
           className="rounded-xl shadow-md"
-          style={{ maxHeight: '50vh', width: 'auto', height: 'auto' }}
+          style={{ maxHeight: '45vh', width: 'auto', height: 'auto' }}
         />
         {description && (
           <p className="descriptionPop">{description}</p>
@@ -114,23 +114,23 @@ export default function GameMap({ etapes, currentIndex, dernierePosition, onCent
         
 
         {etapes
-          .filter((e, idx) => {
-            if (e.id === 'start') return true;         
-            if (idx < currentIndex) return true;        
-            if (idx === currentIndex) return true;      
+          // .filter((e, idx) => {
+          //   if (e.id === 'start') return true;         
+          //   if (idx < currentIndex) return true;        
+          //   if (idx === currentIndex) return true;      
             
-            return false;                               
-          })
+          //   return false;                               
+          // })
           .map((e, idx) => (
             <Marker key={e.id || idx} position={[e.lat, e.lng]} icon={stepIcon}>
-              <Popup closeOnClick={false} autoClose={false}>
+              <Popup closeOnClick={false} autoClose={true}>
                <div style= {{textAlign:'center'}}>
                   <h3>{e.valide ? `✅ ${e.nom}` : e.nom}</h3>
                   {e.image && (
                     <img
                       src={`${import.meta.env.BASE_URL}images/${e.image}`}
                       alt={e.nom}
-                      style={{ width: '80%', objectFit: 'contain', marginTop: '5px', cursor: 'pointer', pointerEvents: 'auto',touchAction:'none' }}
+                      style={{ width: '70%', objectFit: 'contain', marginTop: '5px', cursor: 'pointer', pointerEvents: 'auto',touchAction:'none' }}
                       onClick={(ev) => {
                         ev.stopPropagation() // 🔑 bloque Leaflet de récupérer le clic
                         setModalImage(`${import.meta.env.BASE_URL}images/${e.image}`)
