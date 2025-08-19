@@ -49,7 +49,10 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯enigme n°1',
         lat: -20.901010,
         lng: 55.484410,
-        reponses: ['b8bbfebf460922fa97036bed5cf939b2c00382da420d66c7f978f137bf40a81e','0331abfff99f7ade250c8f48e1bfe9643aba48b0c5dbb9e28c68a255b52b9b37','78dedc26de9b40a973ad2e660b7ca18c38c11df52d30728c94c0a1feb7e577e1','c7c783e65aefe47bc122f17c8cbfa0638218d4721de32cea0ac030579c2150f7'],
+        reponses: [
+    'b8bbfebf460922fa97036bed5cf939b2c00382da420d66c7f978f137bf40a81e',
+    '0331abfff99f7ade250c8f48e1bfe9643aba48b0c5dbb9e28c68a255b52b9b37'
+  ],
         valide: false,
         image:'enigme_1.jpg',
         description:'Bâtiment S4A - S4B'
@@ -59,7 +62,10 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯enigme n°2',
         lat: -20.90137,
         lng: 55.484837,
-        reponses: ['674cefbedf88cfb36e9b664d7d08b6b43fba8194580bafb7e9fdcaa1603a39e1','2478fbf4628341ce72a36b4b4b70db69ceb6de6b5911df25bf27a0b063300b9d','cc2a8943a206524b14da8e9386f186c584cd0022918b8e9514b992f6817160f1','3707af693bab3de604f1514f78f1c9d28d4c1a0f16a0135aca2969fab2c82c19'],
+        reponses: [
+    '674cefbedf88cfb36e9b664d7d08b6b43fba8194580bafb7e9fdcaa1603a39e1',
+    '2478fbf4628341ce72a36b4b4b70db69ceb6de6b5911df25bf27a0b063300b9d'
+  ],
         valide: false,
         image:'enigme_2.webp',
         description:'Bâtiment S2'
@@ -69,7 +75,10 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯enigme n°3',
         lat: -20.901500,
         lng: 55.483870,
-        reponses: ['3','trois','Trois'],
+        reponses:  [
+    '766d40c96d82a7a92ae6a7a0fd2effcf97b71e2d84e761eeb12a6ddb392749dd',
+    'a1daa8644b100a924a9fd442665ed5ecdcb4acb1a7bff62cc5c146316e658c44'
+  ],
         valide: false,
         image:'enigme_3.webp',
         description:'Batiment S1'
@@ -79,7 +88,10 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯enigme n°4',
         lat: -20.901450,
         lng: 55.483020,
-        reponses: ['4','quatre','Quatre'],
+        reponses: [
+    '5047313b4475cd7e5418bb5561b1e3f23250da7b7dab876bb6cac032c933aff5',
+    '218829799b6810651b0bd3eeec2c355b1ba2197d0b6be348e64b64543dc26731'
+  ],
         valide: false,
         image:'enigme_4.webp',
         description:'Bibliothèque Universitaire'
@@ -89,7 +101,10 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯enigme n°5',
         lat: -20.901990,
         lng: 55.483500,
-        reponses: ['5','cinq','Cinq'],
+        reponses:  [
+    '1ffa1a6ed0b38533dd172e63e85b24d9fb5f39a2335ed55d14b3e5f713dbf22e',
+    '7ae190ed8e137838f71ce0ecc5f7aa9f0f393ab52b4c4b433afb7654a2222797'
+  ],
         valide: false,
         image:'enigme_5.webp',
         description: 'Caféteria'
@@ -100,7 +115,10 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯enigme n°6',
         lat: -20.902310,
         lng: 55.483800,
-        reponses: ['6','six','Six'],
+        reponses: [
+    '3d8f56dec72169522a649ed2ac1a9923888c227249d1873a5377cb2a323e0fb8',
+    '9f2a65a4d80a0a3c8dea680c36a89572e465ff523c730146b700cc043e09306e'
+  ],
         valide: false,
         image:'enigme_6.webp',
         description:'Restaurant Universitaire'
@@ -110,7 +128,10 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯enigme n°7',
         lat: -20.902317,
         lng: 55.484320,
-        reponses: ['7','sept','Sept'],
+        reponses: [
+    '28fe2fb79ab57c77c7123990b0421940c2e29d8b9cfabc15fb19086e143384a3',
+    '5dc269d5fc94c3a2b685ffd93a3da38340aa3c15e0ec3557cd118b60595c4c16'
+  ],
         valide: false,
         image:'enigme_7.webp',
         description: 'DOFIP'
@@ -120,7 +141,10 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯enigme n°8',
         lat: -20.902700,
         lng: 55.484570,
-        reponses: ['8','huit','Huit'],
+        reponses:  [
+    '30ee0187e886d944d47939029caa6c02eb53676d9e5bfd2230a68906a29e7cb0',
+    'fa896753a3968606e0c7ef2113cf43c7dc12d2e56719a3456a1379406754cb92'
+  ],
         valide: false,
         image:'',
         description: 'SUMPPS'
@@ -130,7 +154,10 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯enigme n°9',
         lat: -20.902390,
         lng: 55.485570,
-        reponses: ['9','neuf','Neuf'],
+        reponses: [
+    'a4f47f963ab357e8c7e697dca9cd38be3a0b25f2ad8250ab6611156f36d0061e',
+    '95ef1925a7648e030de28aa8353248f221f9f96b48a051b3f126fb572aeaadc4'
+  ],
         valide: false,
         image:'enigme_9.webp',
         description: 'Amphi 550/Bioclimatique'
@@ -140,7 +167,10 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯enigme n°10',
         lat: -20.901900,
         lng: 55.485710,
-        reponses: ['10','dix','Dix'],
+        reponses: [
+    'c61ffe0528ff8213e148485c59169146e01ba5b80008a0c88a95a573cf967472',
+    'dd98d7aa9a802576a0b5409a6da4245122588100c22bdacc339d8e31e0365703'
+  ],
         valide: false,
         image:'enigme_10.webp',
         description: "On est content de le voir quand on a de l'argent !!"
@@ -149,6 +179,8 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
   }
 
   // function normaliser(s){ return String(s||'').trim().toLowerCase().normalize('NFD').replace(/['\u0300-\u036f']/g,'').replace(/\s+/g,' ') }
+
+
 
 
   useEffect(() => {
@@ -234,11 +266,20 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
   //   }
   // }
 
+  const normaliser = s =>
+  (s || '')
+    .toString()
+    .trim()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f']/g, '')
+    .replace(/\s+/g, ' ');
 
 async function validerReponse() {
   if (enigmeIndex === null) return;
 
-  const user =reponseTemp;
+  // Normaliser la réponse avant de hasher
+  const user = normaliser(reponseTemp);
   const userHash = await hashPBKDF2(user);
 
   const hashes = etapes[enigmeIndex].reponses;
@@ -249,11 +290,10 @@ async function validerReponse() {
     setEtatTexte(`✔️ Étape validée : ${etapes[enigmeIndex]?.nom || ''}`);
     setEnigmeIndex(null);
     setReponseTemp('');
-        // Vérifier si c'est la première énigme validée
+
     if (enigmeIndex === 0) {
       setFinished(true);
       setEtatTexte('🎉 Félicitations ! La chasse est terminée !');
-      // Si tu veux, tu peux aussi marquer toutes les étapes comme validées
       setEtapes(prev => prev.map(e => ({ ...e, valide: true })));
     } else {
       setEtapeActuelle(prev => prev + 1);

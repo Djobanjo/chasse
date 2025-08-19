@@ -2,9 +2,7 @@ import React from 'react'
 
 export default function EnigmeModal({ etape, reponse, onChangeReponse, onValidate, onCancel }){
   return (
-    <div className="enigme-modal"
-    style={{ 
-      backgroundImage:`url(${import.meta.env.BASE_URL}fondInput.webp)`}}>
+    <div className="enigme-modal">
       <h2>{etape.nom}</h2>
       <p>{etape.enigme}</p>
       <input type="text" value={reponse} onChange={e => onChangeReponse(e.target.value)} placeholder="Tape ta réponse ici" />

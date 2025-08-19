@@ -36,7 +36,7 @@ body { margin:0; background:#1e4f74; }
   box-shadow: 0 6px 30px rgba(0,0,0,0.2);
   box-sizing: border-box;
   z-index: 2000;
-  
+  background: #ffd313;
   background-position: 75% 2%;
   background-size: 400%;
 }
@@ -587,7 +587,7 @@ body { margin:0; background:#1e4f74; }
   overflow-y: auto; 
   z-index:2000; 
   box-sizing: border-box; 
-
+  background: #f6dd99;
   background-position: 75% 2%;
   background-size: 400%;
 }
