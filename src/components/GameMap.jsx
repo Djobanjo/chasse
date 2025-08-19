@@ -82,6 +82,34 @@ export default function GameMap({ etapes, currentIndex, dernierePosition, onCent
   const [modalTitle, setModalTitle] = useState("")
   const [modalDescription, setModalDescription] = useState("");
 
+useEffect(() => {
+  if (!mapRef.current) return;
+
+  const handleMapClick = () => {
+    // Ferme la modale si ouverte
+    if (modalImage) setModalImage(null);
+
+    // Ferme tous les popups ouverts sur la carte
+    mapRef.current.closePopup();
+  };
+
+  mapRef.current.on('click', handleMapClick);
+
+  return () => {
+    mapRef.current.off('click', handleMapClick);
+  };
+}, [modalImage]);
+
+
+  useEffect(() => {
+    etapes.forEach(e => {
+      if (e.image) {
+        const img = new Image();
+        img.src = `${import.meta.env.BASE_URL}images/${e.image}`;
+      }
+    });
+  }, [etapes]);
+
     
     useEffect(() => {
     if (mapRef.current) {
@@ -133,6 +161,9 @@ export default function GameMap({ etapes, currentIndex, dernierePosition, onCent
                       style={{ width: '70%', objectFit: 'contain', marginTop: '5px', cursor: 'pointer', pointerEvents: 'auto',touchAction:'none' }}
                       onClick={(ev) => {
                         ev.stopPropagation() // 🔑 bloque Leaflet de récupérer le clic
+                        if (mapRef.current) {
+                          mapRef.current.closePopup(); // 🔒 ferme le popup derrière
+                        }
                         setModalImage(`${import.meta.env.BASE_URL}images/${e.image}`)
                         setModalTitle(e.nom);
                         setModalDescription(e.description );

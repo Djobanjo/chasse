@@ -4,6 +4,8 @@ import EnigmeModal from './components/EnigmeModal'
 import TeamNameModal from './components/TeamNameModal';
 import FelicitationPage from './components/FelicitationPage';
 import { hashPBKDF2 } from './utils/hash';
+import html2canvas from "html2canvas";
+
 
 
 
@@ -59,7 +61,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         lng: 55.484837,
         reponses: ['674cefbedf88cfb36e9b664d7d08b6b43fba8194580bafb7e9fdcaa1603a39e1','2478fbf4628341ce72a36b4b4b70db69ceb6de6b5911df25bf27a0b063300b9d','cc2a8943a206524b14da8e9386f186c584cd0022918b8e9514b992f6817160f1','3707af693bab3de604f1514f78f1c9d28d4c1a0f16a0135aca2969fab2c82c19'],
         valide: false,
-        image:'enigme_2.jpg',
+        image:'enigme_2.webp',
         description:'Bâtiment S2'
       },
       {
@@ -69,7 +71,8 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         lng: 55.483870,
         reponses: ['3','trois','Trois'],
         valide: false,
-        description:'Amphi Charpak'
+        image:'enigme_3.webp',
+        description:'Batiment S1'
       },
       {
         id: 'bu-sciences',
@@ -78,7 +81,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         lng: 55.483020,
         reponses: ['4','quatre','Quatre'],
         valide: false,
-        image:'enigme_4.jpg',
+        image:'enigme_4.webp',
         description:'Bibliothèque Universitaire'
       },
       {
@@ -88,7 +91,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         lng: 55.483500,
         reponses: ['5','cinq','Cinq'],
         valide: false,
-        image:'enigme_5.jpg',
+        image:'enigme_5.webp',
         description: 'Caféteria'
 
       },
@@ -99,7 +102,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         lng: 55.483800,
         reponses: ['6','six','Six'],
         valide: false,
-        image:'enigme_6.jpg',
+        image:'enigme_6.webp',
         description:'Restaurant Universitaire'
       },
       {
@@ -109,7 +112,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         lng: 55.484320,
         reponses: ['7','sept','Sept'],
         valide: false,
-        image:'enigme_7.jpg',
+        image:'enigme_7.webp',
         description: 'DOFIP'
       },
       {
@@ -129,7 +132,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         lng: 55.485570,
         reponses: ['9','neuf','Neuf'],
         valide: false,
-        image:'enigme_9.jpg',
+        image:'enigme_9.webp',
         description: 'Amphi 550/Bioclimatique'
       },
       {
@@ -139,7 +142,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         lng: 55.485710,
         reponses: ['10','dix','Dix'],
         valide: false,
-        image:'enigme_10.jpg',
+        image:'enigme_10.webp',
         description: "On est content de le voir quand on a de l'argent !!"
       }
     ]
