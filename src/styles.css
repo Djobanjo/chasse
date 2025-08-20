@@ -36,7 +36,7 @@ body { margin:0; background:#1e4f74; }
   box-shadow: 0 6px 30px rgba(0,0,0,0.2);
   box-sizing: border-box;
   z-index: 2000;
-  background: #ffd313;
+  background: #f6dd99;
   background-position: 75% 2%;
   background-size: 400%;
 }
@@ -75,7 +75,9 @@ body { margin:0; background:#1e4f74; }
   position: fixed;       /* prend tout l’écran */
   top: 15%;
   left: 35%;
-  width: 25%;
+  width: 50%;
+  height:auto;
+  max-width: 420px;
   height: 62%;
   background:  #f6dd99;
   border: 6px solid #ffd313; /* couleur du cadre, ici doré */
@@ -292,14 +294,14 @@ body { margin:0; background:#1e4f74; }
   z-index: 3199;        /* au-dessus du blur */
 }
 .modal{
-  min-height:170px;
+  min-height:190px;
   text-align: center;
   border: 1px solid #ccc; /* bordure grise */
   border-radius: 1px;;
   padding: 16px;
   flex-direction: column;
   white-space: nowrap;
-  width: 100%;
+  width: 170%;
   background: #1e4f74;
   border: 6px solid #ffd313;
   background-size: 15%;
@@ -592,14 +594,17 @@ body { margin:0; background:#1e4f74; }
   background-size: 400%;
 }
 
+
 .enigme-modal input { 
-  width:100%; 
+  width:95%; 
   padding:8px; 
   margin-top:8px; 
   border-radius:6px; 
   border:1px solid #ccc; }
 
-.modal-actions { 
+.modal-actions {
+  position: relative;
+  left:-81px;
   margin-top:12px; 
   display:flex; 
   gap:8px; 
@@ -636,25 +641,27 @@ body { margin:0; background:#1e4f74; }
 
 
 .modal h2 {
+  width: 70%;
   position: relative;
   font-family: 'Lexend Deca', Arial, sans-serif;
   color: #1e4f74;
   text-align: center;
-  padding: 1px;
+  padding: 1px ;
+  left:50px;
   border: 1px solid #ffd313;
   background: #ffd313;     
   word-break: break-word;
   overflow-wrap: break-word;
   border-radius: 1px;
-  margin: 0;
+  margin: 0px;
   font-size: clamp(1em, 4vw, 1.2em); /* adapte la taille au viewport */
 }
 #downloadBtn{
   width: 35%;
   cursor: pointer;
   position:relative;
-  top:-55px;
-  left:447px;
+  top:-80px;
+  left:377px;
   border-color: #1e4f74;
 
 }

@@ -140,7 +140,6 @@ useEffect(() => {
           </Marker>
         )}
         
-
         {etapes
           .filter((e, idx) => {
             if (e.id === 'start') return true;         

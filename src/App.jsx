@@ -17,7 +17,9 @@ export default function App(){
   const [dernierePosition, setDernierePosition] = useState(null)
   const [enigmeIndex, setEnigmeIndex] = useState(null)
   const [etatTexte, setEtatTexte] = useState('📍 En attente de position...')
-  const [geolocActive, setGeolocActive] = useState(false)
+  const [geolocActive, setGeolocActive] = useState(
+  localStorage.getItem('geolocActive') === 'true'
+);
   const [reponseTemp, setReponseTemp] = useState('')
   const watchIdRef = useRef(null)
   const dernierePositionRef = useRef(null)
@@ -134,7 +136,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
   ],
         valide: false,
         image:'enigme_7.webp',
-        description: 'DOFIP'
+        description: 'DOFIPE'
       },
       {
         id:'bat-soin',
@@ -146,7 +148,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
     'fa896753a3968606e0c7ef2113cf43c7dc12d2e56719a3456a1379406754cb92'
   ],
         valide: false,
-        image:'',
+        image:'enigme_8.webp',
         description: 'SUMPPS'
       },
       {
@@ -292,8 +294,10 @@ async function validerReponse() {
 //     }
 //   } else {
 //     setEtatTexte('❌ Mauvaise réponse. Essaie encore !');
+//     setReponseTemp('');
 //   }
 // }
+          /*NO TEST */
     setEtapeActuelle(prev => {
       const n = prev + 1;
       if (n >= etapes.length) {
@@ -304,6 +308,7 @@ async function validerReponse() {
     });
   } else {
     setEtatTexte('❌ Mauvaise réponse. Essaie encore !');
+    setReponseTemp('');
   }
 }
 
@@ -313,18 +318,17 @@ async function validerReponse() {
       const current = etapes[etapeActuelle];
       if (current && !current.valide){
         const dist = distanceEnMetres(dernierePosition.lat, dernierePosition.lng, current.lat, current.lng);
-        if (dist < 20){
+        if (dist < 10){
           setEnigmeIndex(etapeActuelle);
         }
       }
     }, [dernierePosition, etapes, etapeActuelle]);
   
   useEffect(() => {
-  const active = localStorage.getItem('geolocActive')
-  if (active === 'true') {
-    lancerWatchPosition()
-  }
-  }, [])
+    if (geolocActive) {
+      lancerWatchPosition();
+    }
+  }, [geolocActive]);
 
 
 
@@ -352,7 +356,7 @@ async function validerReponse() {
         />
       
 
-        {!teamName && (
+        {!finished && !teamName && (
           <>
             <div className="overlay-blur-map"></div>
             <div className="overlay-modal">
@@ -366,7 +370,7 @@ async function validerReponse() {
           </>
         )}
       </div>
-        {enigmeIndex !== null && etapes[enigmeIndex] && (
+        {!finished && enigmeIndex !== null && etapes[enigmeIndex] && (
           <>
             <div className="modal-overlay" onClick={() => setEnigmeIndex(null)}></div>
             <div className="modal-container">
@@ -382,11 +386,9 @@ async function validerReponse() {
         )}
         {finished && (
           <>
-            
             <FelicitationPage teamName={teamName} className="felicitation" />
           </>
         )}
-        
 
       </main>
     </div>
