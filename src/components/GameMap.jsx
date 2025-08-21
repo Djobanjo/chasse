@@ -83,7 +83,7 @@ export default function GameMap({ etapes, currentIndex, dernierePosition, onCent
       mapRef.current.invalidateSize();
 
       // ajuste la vue pour que les bounds remplissent tout le cadre
-      mapRef.current.fitBounds(bounds, { padding: [0, 0] });
+      mapRef.current.fitBounds(bounds, { padding: [-100, -100] });
     }
   }, [mapRef]);
 
