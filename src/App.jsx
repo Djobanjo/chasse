@@ -75,8 +75,8 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
       {
         id: 'amphi-a',
         nom: '🎯enigme n°3',
-        lat: -20.901500,
-        lng: 55.483870,
+        lat: -20.901531,
+        lng: 55.483708,
         reponses:  [
     '766d40c96d82a7a92ae6a7a0fd2effcf97b71e2d84e761eeb12a6ddb392749dd',
     'a1daa8644b100a924a9fd442665ed5ecdcb4acb1a7bff62cc5c146316e658c44'
