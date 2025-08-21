@@ -42,6 +42,7 @@ function GetMapInstance({ setMapInstance }) {
   }
   
 
+
 function RecenterOnce({ position }){
   const map = useMap()
   const hasCentered = useRef(false);
@@ -54,18 +55,22 @@ function RecenterOnce({ position }){
   }, [position, map])
   return null
 }
-/*NO TEST */
-// const bounds = [
-//   [-20.9039, 55.4871], 
-//   [-20.9003, 55.4810]  
+const bounds = [
+  [-20.9038, 55.4871], // sud-ouest (latitude plus petite, longitude plus petite)
+  [-20.9001, 55.4810]  // nord-est (latitude plus grande, longitude plus grande)
+];
+// const centerLat = (bounds[0][0] + bounds[1][0]) / 2;
+// const centerLng = (bounds[0][1] + bounds[1][1]) / 2;
+
+// const scale = 0.7; // réduction à 50%
+// const height = (bounds[1][0] - bounds[0][0]) * scale / 2;
+// const width = (bounds[1][1] - bounds[0][1]) * scale / 2;
+
+// const newBounds = [
+//   [centerLat - height, centerLng - width],
+//   [centerLat + height, centerLng + width]
 // ];
 
-
-/* TEST*/
-const bounds =[
-  [-20.9008, 55.4869],
-  [-20.9033, 55.4820]
-];
 
 const userIcon = L.icon({ iconUrl: 'https://cdn-icons-png.flaticon.com/512/149/149060.png', iconSize: [32,32], iconAnchor: [16,32] })
 const stepIcon = L.icon({ iconUrl: 'https://cdn-icons-png.flaticon.com/512/252/252025.png', iconSize: [30,30], iconAnchor: [15,30] })
@@ -76,16 +81,6 @@ export default function GameMap({ etapes, currentIndex, dernierePosition, onCent
   const [modalImage, setModalImage] = useState(null)
   const [modalTitle, setModalTitle] = useState("")
   const [modalDescription, setModalDescription] = useState("");
-
-  useEffect(() => {
-    if (mapRef.current) {
-      // recalcul de la taille du conteneur Leaflet
-      mapRef.current.invalidateSize();
-
-      // ajuste la vue pour que les bounds remplissent tout le cadre
-      mapRef.current.fitBounds(bounds, { padding: [0, 0] });
-    }
-  }, [mapRef]);
 
 useEffect(() => {
   if (!mapRef.current) return;
@@ -126,46 +121,33 @@ useEffect(() => {
   return (
     <div className="map-wrap">
       <MapContainer
-        /*bounds={bounds}*/
+        bounds={bounds}
         minZoom={17}
         maxZoom={18}
         style={{ height: '100%', width: '100%', borderRadius: '0' }}
         maxBounds={bounds}
         maxBoundsViscosity={1.0}
       >
-        
-        {/* TEST MAP PERSONALISEE*/}
-        <TileLayer
-          url={`${import.meta.env.BASE_URL}tiles2/{z}/{x}/{y}.png`}
-          attribution="&copy; MapTiler"
-        />
-
-        {/* MAP DE BASE*/}
-        {/*<TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />*/}
-
-
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {/* <ImageOverlay
           url="public/carte.png"
           bounds={bounds}
         /> */}
-
         <GetMapInstance setMapInstance={map =>(mapRef.current = map)} />
         {dernierePosition && (
           <Marker position={[dernierePosition.lat, dernierePosition.lng]} icon={userIcon}>
             <Popup>Vous êtes ici</Popup>
           </Marker>
         )}
-
-
         
         {etapes
-          // .filter((e, idx) => {
-          //   if (e.id === 'start') return true;         
-          //   if (idx < currentIndex) return true;        
-          //   if (idx === currentIndex) return true;      
+          .filter((e, idx) => {
+            if (e.id === 'start') return true;         
+            if (idx < currentIndex) return true;        
+            if (idx === currentIndex) return true;      
             
-          //   return false;                               
-          // })
+            return false;                               
+          })
           .map((e, idx) => (
             <Marker key={e.id || idx} position={[e.lat, e.lng]} icon={stepIcon}>
               <Popup closeOnClick={false} autoClose={true}>

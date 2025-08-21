@@ -238,8 +238,7 @@ body { margin:0; background:#1e4f74; }
 }
 
 .map-container {
-
-  width: 90%;
+  width: 100%;
   max-width: none;
   margin: 0 auto;
 }
@@ -252,7 +251,6 @@ body { margin:0; background:#1e4f74; }
   height: 100vh;         /*70vh*/
   width: 100%;           /*80%*/
   margin: 12px 0;    /*20px auto*/
-  overflow: hidden;
   border-radius: 10px;
   border-radius: 12px; /* arrondi des coins */
   border: 6px solid #ffd313; /* couleur du cadre, ici doré */
