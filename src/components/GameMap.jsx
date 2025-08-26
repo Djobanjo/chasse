@@ -42,7 +42,6 @@ function GetMapInstance({ setMapInstance }) {
   }
   
 
-
 function RecenterOnce({ position }){
   const map = useMap()
   const hasCentered = useRef(false);
