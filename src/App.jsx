@@ -48,7 +48,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
     return [
       {
         id:'RU',
-        nom: '🎯enigme n°1',
+        nom: '🎯Enigme n°1 - Réstaurant Universitaire',
         lat: -20.902310,
         lng: 55.483800,
         reponses: [
@@ -57,12 +57,12 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         ],
         valide: false,
         image:'enigme_1.webp',
-        description:'Restaurant Universitaire'
+        description:'Réstaurant Universitaire'
       },
 
       {
         id: 'bu-sciences',
-        nom: '🎯enigme n°2',
+        nom: '🎯Enigme n°2 - Bibliothèque Universitaire',
         lat: -20.901450,
         lng: 55.483020,
         reponses:[
@@ -76,7 +76,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
 
       {
         id: 'bat-s1',
-        nom: '🎯enigme n°3',
+        nom: '🎯Enigme n°3 - Bâtiment S1',
         lat: -20.901500,
         lng: 55.483870,
         reponses:    [
@@ -85,12 +85,12 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         ],
         valide: false,
         image:'enigme_3.webp',
-        description:'Batiment S1'
+        description:'Bâtiment S1'
       },
 
       {
         id: 'bat-S4a',
-        nom: '🎯enigme n°4',
+        nom: '🎯Enigme n°4 - Bâtiment S4A et S4B',
         lat: -20.901010,
         lng: 55.484410,
         reponses:   [
@@ -104,7 +104,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
 
       {
         id: 'bat-S2',
-        nom: '🎯enigme n°5',
+        nom: '🎯Enigme n°5 - Bâtiment S2',
         lat: -20.90137,
         lng: 55.484837,
         reponses:   [
@@ -118,7 +118,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
 
       {
         id:'bat-s4',
-        nom: '🎯enigme n°6',
+        nom: '🎯Enigme n°6 - Amphi A et B',
         lat: -20.901010,
         lng: 55.485270,
         réponses:  [
@@ -127,11 +127,11 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         ],
         valide: false,
         image:'enigme_6.webp',
-        description: 'amphi A et B\nsalles de TD S4D au dessus'
+        description: 'Amphi A et B\nsalles de TD S4D au dessus'
       },
       {
         id:'amphi-commerson',
-        nom: '🎯enigme n°7',
+        nom: '🎯Enigme n°7 - Amphi Commerson',
         lat: -20.901385,
         lng: 55.485310,
         réponses: [
@@ -145,7 +145,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
 
       {
         id:'distrib',
-        nom: '🎯enigme n°8',
+        nom: '🎯Enigme n°8 - Distributeur',
         lat: -20.901900,
         lng: 55.485710,
         reponses:  [
@@ -159,7 +159,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
 
       {
         id:'amphi-550',
-        nom: '🎯enigme n°9',
+        nom: '🎯Enigme n°9 - Amphi 550',
         lat: -20.902390,
         lng: 55.485570,
         reponses: [
@@ -173,7 +173,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
 
       {
         id:'bat-soin',
-        nom: '🎯enigme n°10',
+        nom: '🎯Enigme n°10 - SUMPPS',
         lat: -20.902700,
         lng: 55.484570,
         reponses:    [
@@ -182,7 +182,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         ],
         valide: false,
         image:'enigme_10.webp',
-        description: 'SUMPPS\n Batiment bien soignéeee !!'
+        description: 'SUMPPS\n Bâtiment bien soignéeee !!'
       }
     ]
   }
@@ -290,32 +290,32 @@ async function validerReponse() {
     setReponseTemp('');
 
     /* LES TESTS */
-//     if (enigmeIndex === 0) {
-//       setFinished(true);
-//       setEtatTexte('🎉 Félicitations ! La chasse est terminée !');
-//       setEtapes(prev => prev.map(e => ({ ...e, valide: true })));
-//     } else {
-//       setEtapeActuelle(prev => prev + 1);
-//     }
-//   } else {
-//     setEtatTexte('❌ Mauvaise réponse. Essaie encore !');
-//     setReponseTemp('');
-//   }
-// }
-          /*NO TEST */
-    setEtapeActuelle(prev => {
-      const n = prev + 1;
-      if (n >= etapes.length) {
-        setEtatTexte('🎉 Chasse au trésor terminée !');
-        setFinished(true);
-      }
-      return n;
-    });
+    if (enigmeIndex === 0) {
+      setFinished(true);
+      setEtatTexte('🎉 Félicitations ! La chasse est terminée !');
+      setEtapes(prev => prev.map(e => ({ ...e, valide: true })));
+    } else {
+      setEtapeActuelle(prev => prev + 1);
+    }
   } else {
     setEtatTexte('❌ Mauvaise réponse. Essaie encore !');
     setReponseTemp('');
   }
 }
+          /*NO TEST */
+//     setEtapeActuelle(prev => {
+//       const n = prev + 1;
+//       if (n >= etapes.length) {
+//         setEtatTexte('🎉 Chasse au trésor terminée !');
+//         setFinished(true);
+//       }
+//       return n;
+//     });
+//   } else {
+//     setEtatTexte('❌ Mauvaise réponse. Essaie encore !');
+//     setReponseTemp('');
+//   }
+// }
 
   useEffect(() => {
       if (!dernierePosition) return;
