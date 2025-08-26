@@ -247,9 +247,12 @@ body { margin:0; background:#1e4f74; }
   width: 100%;
   flex: 1;
 }
+
+
+
 .map-wrap {
-  height: 100vh;         /*70vh*/
-  width: 100%;           /*80%*/
+  height: 90vh;         /*90vh*/
+  width: 100%;           /*100%*/
   margin: 12px 0;    /*20px auto*/
   border-radius: 10px;
   border-radius: 12px; /* arrondi des coins */
