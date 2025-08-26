@@ -150,13 +150,13 @@ useEffect(() => {
           .map((e, idx) => (
             <Marker key={e.id || idx} position={[e.lat, e.lng]} icon={stepIcon}>
               <Popup closeOnClick={false} autoClose={true}>
-               <div style= {{textAlign:'center'}}>
+               <div style= {{textAlign:'center',whiteSpace:'nowrap'}}>
                   <h3>{e.valide ? `✅ ${e.nom}` : e.nom}</h3>
                   {e.image && (
                     <img
                       src={`${import.meta.env.BASE_URL}images/${e.image}`}
                       alt={e.nom}
-                      style={{ width: '70%', objectFit: 'contain', marginTop: '5px', cursor: 'pointer', pointerEvents: 'auto',touchAction:'none' }}
+                      style={{ width: '50%', objectFit: 'contain', marginTop: '5px', cursor: 'pointer', pointerEvents: 'auto',touchAction:'none' }}
                       onClick={(ev) => {
                         ev.stopPropagation() // 🔑 bloque Leaflet de récupérer le clic
                         if (mapRef.current) {
