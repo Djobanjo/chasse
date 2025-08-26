@@ -135,13 +135,13 @@ useEffect(() => {
       >
         
         {/* TEST MAP PERSONALISEE*/}
-        <TileLayer
+        {/* <TileLayer
           url={`${import.meta.env.BASE_URL}tiles2/{z}/{x}/{y}.png`}
           attribution="&copy; MapTiler"
-        />
+        /> */}
 
         {/* MAP DE BASE*/}
-        {/*<TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />*/}
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
 
         {/* <ImageOverlay
@@ -159,13 +159,13 @@ useEffect(() => {
 
         
         {etapes
-          // .filter((e, idx) => {
-          //   if (e.id === 'start') return true;         
-          //   if (idx < currentIndex) return true;        
-          //   if (idx === currentIndex) return true;      
+          .filter((e, idx) => {
+            if (e.id === 'start') return true;         
+            if (idx < currentIndex) return true;        
+            if (idx === currentIndex) return true;      
             
-          //   return false;                               
-          // })
+            return false;                               
+          })
           .map((e, idx) => (
             <Marker key={e.id || idx} position={[e.lat, e.lng]} icon={stepIcon}>
               <Popup closeOnClick={false} autoClose={true}>
