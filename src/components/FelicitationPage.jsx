@@ -17,9 +17,8 @@ export default function FelicitationPage({ teamName }) {
   };
 
   const handleClose = () => {
-    setClosing(true); // déclenche l'animation
+    setClosing(true); 
 
-    // Attendre la fin de l'animation (ici 300ms) avant de vider le localStorage
     setTimeout(() => {
       localStorage.clear();
       window.location.reload();
@@ -28,7 +27,7 @@ export default function FelicitationPage({ teamName }) {
 
   return (
     <div className="overlay">
-      {/* La modal */}
+      
       <div
         ref={modalRef}
         className={`modal ${closing ? "modal-closing" : ""}`}
@@ -38,7 +37,7 @@ export default function FelicitationPage({ teamName }) {
           transition: "transform 0.3s ease, opacity 0.3s ease",
         }}
       >
-        {/* X pour fermer */}
+
         <button
           onClick={handleClose}
           style={{
@@ -54,11 +53,16 @@ export default function FelicitationPage({ teamName }) {
           ×
         </button>
 
+        <img
+          src={`${import.meta.env.BASE_URL}logo.webp`} // place ton logo dans /public/logo.png
+          alt="Logo"
+          className="modal-logo"
+        />
+
         <h1>Félicitations</h1>
         <h2>L'équipe: {teamName}</h2>
       </div>
-
-      {/* Bouton pour télécharger */}
+      
     <button
       id="downloadBtn"
       className="btnValideName"
