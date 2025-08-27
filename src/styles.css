@@ -72,7 +72,7 @@ body { margin:0; background:#1e4f74; }
 
 
 .fixed.inset-0 {
-  position: fixed;       /* prend tout l’écran */
+  position: fixed;      
   top: 15%;
   left: 35%;
   width: 50%;
@@ -80,7 +80,7 @@ body { margin:0; background:#1e4f74; }
   max-width: 420px;
   height: 62%;
   background:  #f6dd99;
-  border: 6px solid #ffd313; /* couleur du cadre, ici doré */
+  border: 6px solid #ffd313; 
   border-radius: 22px;
   min-height: 250px;
   padding: 44px 50px 30px 50px;
@@ -124,11 +124,11 @@ body { margin:0; background:#1e4f74; }
 .rounded-xl {
   position:relative;
  align-items: center;
-  border: 6px solid #ffd313; /* couleur du cadre, ici doré */
+  border: 6px solid #ffd313; 
   border-radius: 35px;
 }
 
-.modal-close-btn { /*fermer image module*/
+.modal-close-btn {
   position: absolute;
   top: 8px;
   right: 10px;
@@ -148,14 +148,14 @@ body { margin:0; background:#1e4f74; }
 }
 
 .modal-close-btn:hover {
-  background-color: #ffd313;   /* légèrement plus foncé au survol */
+  background-color: #ffd313;  
 }
 
 
 .flex.items-center.justify-center {
   display: flex;
-  align-items: center;   /* centre verticalement */
-  justify-content: center; /* centre horizontalement */
+  align-items: center;   
+  justify-content: center; 
 }
 
 
@@ -243,7 +243,7 @@ body { margin:0; background:#1e4f74; }
   margin: 0 auto;
 }
 .map-wrapper {
-  position: relative; /* nécessaire pour que le modal et le blur soient au-dessus */
+  position: relative; 
   width: 100%;
   flex: 1;
 }
@@ -251,14 +251,14 @@ body { margin:0; background:#1e4f74; }
 
 
 .map-wrap {
-  height: 90vh;         /*90vh*/
-  width: 100%;           /*100%*/
-  margin: 12px 0;    /*20px auto*/
+  height: 90vh;         
+  width: 100%;           
+  margin: 12px 0;    
   border-radius: 10px;
-  border-radius: 12px; /* arrondi des coins */
-  border: 6px solid #ffd313; /* couleur du cadre, ici doré */
-  box-shadow: 0 0 15px rgba(0,0,0,0.2); /* léger effet 3D */
-  box-sizing: border-box; /* pour que le border soit inclus */
+  border-radius: 12px; 
+  border: 6px solid #ffd313; 
+  box-shadow: 0 0 15px rgba(0,0,0,0.2); 
+  box-sizing: border-box; 
 }
 .overlay-blur-map {
   position: absolute;
@@ -269,7 +269,7 @@ body { margin:0; background:#1e4f74; }
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 3000; /* au-dessus de la carte */
+  z-index: 3000; 
 }
 
 .overlay-modal  {
@@ -280,7 +280,7 @@ body { margin:0; background:#1e4f74; }
   max-width: 420px;
   padding: 20px;
   border-radius: 20px;
-  background: transparent; /* pour laisser voir le cadre bleu/or */
+  background: transparent; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -291,7 +291,7 @@ body { margin:0; background:#1e4f74; }
 .overlay {
   position: fixed;
   top: 35%; left: 32%;
-  z-index: 3199;        /* au-dessus du blur */
+  z-index: 3199;        
 }
 .modal{
   min-height:190px;
@@ -347,7 +347,7 @@ body { margin:0; background:#1e4f74; }
     
 
   .map-wrapper {
-    position: relative; /* nécessaire pour que l'overlay soit positionné au-dessus */
+    position: relative; 
     width: 100%;
     flex: 1;
   }
@@ -429,7 +429,7 @@ body { margin:0; background:#1e4f74; }
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 3000; /* au-dessus de la carte */
+    z-index: 3000; 
   }
 
   .overlay-modal {
@@ -440,17 +440,17 @@ body { margin:0; background:#1e4f74; }
   max-width: 420px;
   padding: 20px;
   border-radius: 20px;
-  background: transparent; /* pour laisser voir le cadre bleu/or */
+  background: transparent; 
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 3000;
   }
-  .icon-left{ /*icone crane*/
+  .icon-left{ 
   width: 32px;
   height: 32px;
   }
-  .icon-right { /*icone ancre*/
+  .icon-right { 
   width: 20px;
   height: 25px;
   }
@@ -539,23 +539,23 @@ body { margin:0; background:#1e4f74; }
     font-weight: bold; 
   }
   .fixed.inset-0 {
-  position: fixed;       /* prend tout l’écran */
+  position: fixed;       
   top: 15%;
   left: 10%;
   width: 75%;
   height: 55%;
   background: #f6dd99;
-  max-width: 55%;           /* largeur du cadre */
+  max-width: 55%;          
   max-height: 90vh; 
-  border: 6px solid #ffd313; /* couleur du cadre, ici doré */
+  border: 6px solid #ffd313; 
   border-radius: 20px;
   padding: 70px 50px 40px 50px;
 }
 
 .flex.items-center.justify-center {
   display: flex;
-  align-items: center;   /* centre verticalement */
-  justify-content: center; /* centre horizontalement */
+  align-items: center;   
+  justify-content: center; 
 }
 .descriptionPop {
   position: relative;
@@ -621,10 +621,10 @@ body { margin:0; background:#1e4f74; }
   margin: 0;
 }
   .overlay {
-  position: fixed;   /* ou fixed si tu veux centré écran */
+  position: fixed;   
   width: 100%;
   transform: translate(-100%, -10%);
-  z-index: 3199;        /* au-dessus du blur */
+  z-index: 3199;        
 }
 .modal{
   max-width: 100%;          
@@ -660,7 +660,7 @@ body { margin:0; background:#1e4f74; }
   overflow-wrap: break-word;
   border-radius: 1px;
   margin: 0px;
-  font-size: clamp(0.8em, 4vw, 1.2em); /* adapte la taille au viewport */
+  font-size: clamp(0.8em, 4vw, 1.2em); 
 }
 #downloadBtn{
   font-size: clamp(0.8rem, 2vw, 1rem);

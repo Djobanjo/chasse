@@ -55,20 +55,9 @@ function RecenterOnce({ position }){
   return null
 }
 const bounds = [
-  [-20.9038, 55.4871], // sud-ouest (latitude plus petite, longitude plus petite)
-  [-20.9001, 55.4810]  // nord-est (latitude plus grande, longitude plus grande)
+  [-20.9038, 55.4871], 
+  [-20.9001, 55.4810]  
 ];
-// const centerLat = (bounds[0][0] + bounds[1][0]) / 2;
-// const centerLng = (bounds[0][1] + bounds[1][1]) / 2;
-
-// const scale = 0.7; // réduction à 50%
-// const height = (bounds[1][0] - bounds[0][0]) * scale / 2;
-// const width = (bounds[1][1] - bounds[0][1]) * scale / 2;
-
-// const newBounds = [
-//   [centerLat - height, centerLng - width],
-//   [centerLat + height, centerLng + width]
-// ];
 
 
 const userIcon = L.icon({ iconUrl: 'https://cdn-icons-png.flaticon.com/512/149/149060.png', iconSize: [32,32], iconAnchor: [16,32] })
@@ -128,10 +117,7 @@ useEffect(() => {
         maxBoundsViscosity={1.0}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        {/* <ImageOverlay
-          url="public/carte.png"
-          bounds={bounds}
-        /> */}
+
         <GetMapInstance setMapInstance={map =>(mapRef.current = map)} />
         {dernierePosition && (
           <Marker position={[dernierePosition.lat, dernierePosition.lng]} icon={userIcon}>

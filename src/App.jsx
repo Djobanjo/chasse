@@ -31,7 +31,7 @@ export default function App(){
 
 
 function distanceEnMetres(lat1, lng1, lat2, lng2) {
-  const R = 6371000; // rayon Terre en mètres
+  const R = 6371000; 
   const dLat = deg2rad(lat2 - lat1);
   const dLng = deg2rad(lng2 - lng1);
   const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
@@ -42,7 +42,7 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
 }
 
 
-  function buildInitialSteps(lat, lng){ //lat, lng <== REMETTRE DANS LES PARAMS
+  function buildInitialSteps(lat, lng){ 
     return [
       {
         id:'RU',
@@ -185,7 +185,6 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
     ]
   }
 
-  // function normaliser(s){ return String(s||'').trim().toLowerCase().normalize('NFD').replace(/['\u0300-\u036f']/g,'').replace(/\s+/g,' ') }
 
 
   useEffect(() => {
@@ -285,20 +284,8 @@ async function validerReponse() {
     setEnigmeIndex(null);
     setReponseTemp('');
 
-    /* LES TESTS */
-//     if (enigmeIndex === 0) {
-//       setFinished(true);
-//       setEtatTexte('🎉 Félicitations ! La chasse est terminée !');
-//       setEtapes(prev => prev.map(e => ({ ...e, valide: true })));
-//     } else {
-//       setEtapeActuelle(prev => prev + 1);
-//     }
-//   } else {
-//     setEtatTexte('❌ Mauvaise réponse. Essaie encore !');
-//     setReponseTemp('');
-//   }
-// }
-          /*NO TEST */
+
+        
     setEtapeActuelle(prev => {
       const n = prev + 1;
       if (n >= etapes.length) {
@@ -335,7 +322,6 @@ async function validerReponse() {
 
   return (
     <div>
-      {/* <header className="app-header"><h1>Chasse au trésor </h1></header> */}
       <main className="container">
         <div className="topbar">
           <div id="etat"><span>{etatTexte}</span></div>
