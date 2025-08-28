@@ -109,9 +109,11 @@ function distanceEnMetres(lat1, lng1, lat2, lng2) {
         nom: '🎯Enigme n°5 - Bâtiment S2',
         lat: -20.90137,
         lng: 55.484837,
-        reponses:     [
+        reponses:       [
     'acfa52c05730934290c93d46583af998dd9d3163b3e105c60223b7c7a52d6baa',
-    'e53d59138972d3d7d109e50206939eca2b4451ab6b7f6d4433c740387f20ab0b'
+    'e53d59138972d3d7d109e50206939eca2b4451ab6b7f6d4433c740387f20ab0b',
+    '95a7ca7171faee786ec1f712ced4272326e29fe41780793640819dc3e81d7e31',
+    '1ebfc9e7852e474a0c7c5467fb7024017d433404e1993db746e7d6deb4826720'
   ],
         valide: false,
         image:'enigme_5.webp',
